@@ -15,6 +15,4 @@ class PhoneRepairController extends Controller
 	{
 		return view('phone-repair.create');
 	}
-
-
 }
