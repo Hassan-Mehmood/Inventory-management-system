@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
+use PHPUnit\Framework\MockObject\Stub\ReturnStub;
 
 class PhoneRepairController extends Controller
 {
@@ -15,4 +17,22 @@ class PhoneRepairController extends Controller
 	{
 		return view('phone-repair.create');
 	}
+
+	public function show($id)
+	{
+
+		if ($id % 2 == 0) {
+			$status = 'Completed';
+		} else {
+			$status = 'Pending';
+		}
+
+		return view('phone-repair.show', ['status' => $status]);
+	}
+
+	public function edit($id)
+	{
+		return view('phone-repair.edit');
+	}
+
 }

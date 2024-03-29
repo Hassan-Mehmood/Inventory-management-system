@@ -1,7 +1,13 @@
 <?php
-function isEven($number)
+function checkStatus($id)
 {
-    return $number % 2 == 0;
+    if ($id % 2 == 0) {
+        $status = 'completed';
+    } else {
+        $status = 'pending';
+    }
+
+    return $status;
 }
 
 ?>
@@ -49,7 +55,8 @@ function isEven($number)
                 @for ($i = 0; $i < 10; $i++)
                     <tr>
                         <td class="align-middle text-center">
-                            {{ ++$i }}
+                            <?php $temp_i = $i; ?>
+                            {{ ++$temp_i }}
                         </td>
                         <td class="align-middle text-center">
                             {{-- {{ $order->invoice_no }} --}}
@@ -65,14 +72,16 @@ function isEven($number)
                             Dummy data
                         </td>
                         <td class="align-middle text-center">
-                            <x-status {{-- color="{{ $order->order_status === \App\Enums\OrderStatus::COMPLETE ? 'green' : ($order->order_status === \App\Enums\OrderStatus::PENDING ? 'orange' : '') }}" --}} color="{{ isEven($i) ? 'green' : 'orange' }}"
+                            <x-status {{-- color="{{ $order->order_status === \App\Enums\OrderStatus::COMPLETE ? 'green' : ($order->order_status === \App\Enums\OrderStatus::PENDING ? 'orange' : '') }}" --}}
+                                color="{{ checkStatus($i) === 'completed' ? 'green' : 'orange' }}"
                                 class="text-uppercase">
                                 {{-- {{ $order->order_status->label() }} --}}
-                                {{ isEven($i) ? 'Complete' : 'Pending' }}
+                                {{ checkStatus($i) === 'completed' ? 'Completed' : 'Pending' }}
                             </x-status>
                         </td>
                         <td class="align-middle text-center">
-                            <x-button.show class="btn-icon" route="{{ route('repair-phpne.show', 1) }}" />
+                            <x-button.show class="btn-icon" route="{{ route('phone-repair.show', $i) }}" />
+                            <x-button.edit class="btn-icon" route="{{ route('phone-repair.edit', $i) }}" />
                             @if (true)
                                 <x-button.delete class="btn-icon" route="{{ route('orders.cancel', 1) }}"
                                     onclick="return confirm('Are you sure to cancel invoice no. 1 ?')" />

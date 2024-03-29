@@ -124,6 +124,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 	// Phone repair
 	Route::get('/phone-repair', [PhoneRepairController::class, 'index'])->name('phone-repair.index');
 	Route::get('/phone-repair/create', [PhoneRepairController::class, 'create'])->name('phone-repair.create');
+	Route::get('/phone-repair/edit/{id}', [PhoneRepairController::class, 'edit'])->name('phone-repair.edit');
+	Route::get('/phone-repair/{id}', [PhoneRepairController::class, 'show'])->name('phone-repair.show');
 
 	// Route Quotations
 	// Route::get('/quotations/{quotation}/edit', [QuotationController::class, 'edit'])->name('quotations.edit');
