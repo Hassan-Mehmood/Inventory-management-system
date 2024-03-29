@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="page-body">
-        @if (true)
+        @if (false)
             <x-empty title="No phones found" message="Try adjusting your search or filter to find what you're looking for."
                 button_label="{{ __('Add your phone repair') }}" button_route="{{ route('phone-repair.create') }}" />
         @else
@@ -24,7 +24,7 @@
                         <a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
                     </div>
                 @endif
-                <livewire:tables.order-table />
+                <livewire:tables.phone-repair />
             </div>
         @endif
     </div>
