@@ -107,8 +107,7 @@ $status = [
                                                     class="form-select @error('repair_part_id') is-invalid @enderror">
                                                     <option selected="" disabled="">Repair part</option>
                                                     @foreach ($repair_parts as $part)
-                                                        <option value="{{ $part }}"
-                                                            @if (old('repair_part_id', $part) == $part) selected="selected" @endif>
+                                                        <option value="{{ $part }}">
                                                             {{ $part }}</option>
                                                     @endforeach
                                                 </select>

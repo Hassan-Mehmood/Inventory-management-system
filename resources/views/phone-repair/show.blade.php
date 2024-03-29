@@ -66,6 +66,16 @@
                                         </tr>
                                     </tbody>
                                 </table>
+
+                                <div>
+                                    <h3 class="card-title m-3">
+                                        {{ __('Status') }}
+                                    </h3>
+
+                                    <x-progress :status="$status" />
+
+                                </div>
+
                             </div>
                             <div class="card-footer text-end">
                                 <a class="btn btn-info" href="{{ url()->previous() }}">
