@@ -45,12 +45,11 @@
                         {{ __('ID') }}
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('name')" href="#" role="button">
+                        <a wire:click.prevent="sortBy('sub_category_name')" href="#" role="button">
                             {{ __('Sub category name') }}
-                            {{-- @include('inclues._sort-icon', ['field' => 'sub_category_name']) --}}
+                            @include('inclues._sort-icon', ['field' => 'sub_category_name'])
                         </a>
                     </th>
-
                     <th scope="col" class="align-middle text-center">
                         {{ __('Action') }}
                     </th>
@@ -63,7 +62,7 @@
                             {{ $loop->index }}
                         </td>
                         <td class="align-middle text-center">
-                            {{ $subcategory->sub_category_name }}
+                            {{ $category->sub_category_name }}
                         </td>
                     </tr>
                 @empty

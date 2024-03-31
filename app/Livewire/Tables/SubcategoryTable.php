@@ -14,7 +14,7 @@ class SubcategoryTable extends Component
 
 	public $search = '';
 
-	public $sortField = 'name';
+	public $sortField = 'sub_category_name';
 
 	public $sortAsc = false;
 
@@ -31,10 +31,12 @@ class SubcategoryTable extends Component
 
 	public function render()
 	{
+
 		return view('livewire.tables.subcategory-table', [
 			'subcategories' => SubCategory::orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
 				->where('sub_category_name', 'like', '%' . $this->search . '%')
 				->paginate($this->perPage)
+
 		]);
 	}
 }

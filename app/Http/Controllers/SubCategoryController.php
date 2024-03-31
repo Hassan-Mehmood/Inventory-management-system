@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 
@@ -18,21 +19,23 @@ class SubCategoryController extends Controller
 
 	public function create()
 	{
-		return view('subcategories.create');
+		$categories = Category::all("id", "name");
+		return view('subcategories.create', [
+			'categories' => $categories
+		]);
 	}
 
-	// public function store(StoreCategoryRequest $request)
-	// {
-	// 	Category::create([
-	// 		"user_id" => auth()->id(),
-	// 		"name" => $request->name,
-	// 		"slug" => Str::slug($request->name)
-	// 	]);
+	public function store(Request $request)
+	{
+		SubCategory::create([
+			"sub_category_name" => $request->name,
+			"category_id" => $request->categories
+		]);
 
-	// 	return redirect()
-	// 		->route('categories.index')
-	// 		->with('success', 'Category has been created!');
-	// }
+		return redirect()
+			->route('subcategories.index')
+			->with('success', 'Category has been created!');
+	}
 
 	// public function show(Category $category)
 	// {
