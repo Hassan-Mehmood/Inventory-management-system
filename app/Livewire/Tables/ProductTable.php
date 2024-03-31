@@ -8,37 +8,36 @@ use Livewire\WithPagination;
 
 class ProductTable extends Component
 {
-    use WithPagination;
+	use WithPagination;
 
-    public $perPage = 5;
+	public $perPage = 5;
 
-    public $search = '';
+	public $search = '';
 
-    public $sortField = 'id';
+	public $sortField = 'id';
 
-    public $sortAsc = false;
+	public $sortAsc = false;
 
-    public function sortBy($field): void
-    {
-        if($this->sortField === $field)
-        {
-            $this->sortAsc = ! $this->sortAsc;
+	public function sortBy($field): void
+	{
+		if ($this->sortField === $field) {
+			$this->sortAsc = !$this->sortAsc;
 
-        } else {
-            $this->sortAsc = true;
-        }
+		} else {
+			$this->sortAsc = true;
+		}
 
-        $this->sortField = $field;
-    }
+		$this->sortField = $field;
+	}
 
-    public function render()
-    {
-        return view('livewire.tables.product-table', [
-            'products' => Product::where("user_id",auth()->id())
-                ->with(['category', 'unit'])
-                ->search($this->search)
-                ->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
-                ->paginate($this->perPage)
-        ]);
-    }
+	public function render()
+	{
+		return view('livewire.tables.product-table', [
+			'products' => Product::where("user_id", auth()->id())
+				->with(['category_id'])
+				->search($this->search)
+				->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
+				->paginate($this->perPage)
+		]);
+	}
 }

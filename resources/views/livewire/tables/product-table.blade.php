@@ -67,27 +67,184 @@
                         {{ __('Image') }}
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('phone_name')" href="#" role="button">
-                            {{ __('Phone Name') }}
-                            {{-- @include('inclues._sort-icon', ['field' => 'phone_name']) --}}
+                        <a wire:click.prevent="sortBy('name')" href="#" role="button">
+                            {{ __('Name') }}
+                            @include('inclues._sort-icon', ['field' => 'name'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('cost')" href="#" role="button">
-                            {{ __('Cost') }}
-                            {{-- @include('inclues._sort-icon', ['field' => 'code']) --}}
+                        <a wire:click.prevent="sortBy('description')" href="#" role="button">
+                            {{ __('Description') }}
+                            @include('inclues._sort-icon', ['field' => 'description'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('quantity')" href="#" role="button">
-                            {{ __('Quantity') }}
-                            {{-- @include('inclues._sort-icon', ['field' => 'category_id']) --}}
+                        <a wire:click.prevent="sortBy('manufacturer')" href="#" role="button">
+                            {{ __('Manufacturer') }}
+                            @include('inclues._sort-icon', ['field' => 'manufacturer'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('code')" href="#" role="button">
-                            {{ __('Code') }}
-                            {{-- @include('inclues._sort-icon', ['field' => 'quantity']) --}}
+                        <a wire:click.prevent="sortBy('device')" href="#" role="button">
+                            {{ __('Device') }}
+                            @include('inclues._sort-icon', ['field' => 'device'])
+                        </a>
+                    </th>
+                    <th scope="col" class="align-middle text-center">
+                        <a wire:click.prevent="sortBy('sku')" href="#" role="button">
+                            {{ __('SKU') }}
+                            @include('inclues._sort-icon', ['field' => 'sku'])
+                        </a>
+                    </th>
+                    <th scope="col" class="align-middle text-center">
+                        <a wire:click.prevent="sortBy('upc_code')" href="#" role="button">
+                            {{ __('UPC Code') }}
+                            @include('inclues._sort-icon', ['field' => 'upc_code'])
+                        </a>
+                    </th>
+                    <th scope="col" class="align-middle text-center">
+                        <a wire:click.prevent="sortBy('is_barcode')" href="#" role="button">
+                            {{ __('Is barcode') }}
+                            @include('inclues._sort-icon', ['field' => 'is_barcode'])
+                        </a>
+                    </th>
+                    <th scope="col" class="align-middle text-center">
+                        <a wire:click.prevent="sortBy('valuation_method')" href="#" role="button">
+                            {{ __('Valuation method') }}
+                            @include('inclues._sort-icon', ['field' => 'valuation_method'])
+                        </a>
+                    </th>
+                    <th scope="col" class="align-middle text-center">
+                        <a wire:click.prevent="sortBy('new_stock_adjustment')" href="#" role="button">
+                            {{ __('New stock adjustment') }}
+                            @include('inclues._sort-icon', ['field' => 'new_stock_adjustment'])
+                        </a>
+                    </th>
+                    <th scope="col" class="align-middle text-center">
+                        <a wire:click.prevent="sortBy('new_inventory_item_cost')" href="#" role="button">
+                            {{ __('New inventory item cost') }}
+                            @include('inclues._sort-icon', ['field' => 'new_inventory_item_cost'])
+                        </a>
+                    </th>
+                    <th scope="col" class="align-middle text-center">
+                        <a wire:click.prevent="sortBy('tax_class')" href="#" role="button">
+                            {{ __('Tax inclusive') }}
+                            @include('inclues._sort-icon', ['field' => 'tax_class'])
+                        </a>
+                    </th>
+                    <th scope="col" class="align-middle text-center">
+                        <a wire:click.prevent="sortBy('tax_inclusive')" href="#" role="button">
+                            {{ __('Tax inclusive') }}
+                            @include('inclues._sort-icon', ['field' => 'tax_inclusive'])
+                        </a>
+                    </th>
+                    <th scope="col" class="align-middle text-center">
+                        <a wire:click.prevent="sortBy('retail_price')" href="#" role="button">
+                            {{ __('Retail price') }}
+                            @include('inclues._sort-icon', ['field' => 'retail_price'])
+                        </a>
+                    </th>
+                    <th scope="col" class="align-middle text-center">
+                        <a wire:click.prevent="sortBy('cost_price')" href="#" role="button">
+                            {{ __('Cost price') }}
+                            @include('inclues._sort-icon', ['field' => 'cost_price'])
+                        </a>
+                    </th>
+                    <th scope="col" class="align-middle text-center">
+                        <a wire:click.prevent="sortBy('sale_price')" href="#" role="button">
+                            {{ __('Sale price') }}
+                            @include('inclues._sort-icon', ['field' => 'sale_price'])
+                        </a>
+                    </th>
+                    <th scope="col" class="align-middle text-center">
+                        <a wire:click.prevent="sortBy('minimum_price')" href="#" role="button">
+                            {{ __('Minimum price') }}
+                            @include('inclues._sort-icon', ['field' => 'minimum_price'])
+                        </a>
+                    </th>
+                    <th scope="col" class="align-middle text-center">
+                        <a wire:click.prevent="sortBy('on_hand_quantity')" href="#" role="button">
+                            {{ __('On hand quantity') }}
+                            @include('inclues._sort-icon', ['field' => 'on_hand_quantity'])
+                        </a>
+                    </th>
+                    <th scope="col" class="align-middle text-center">
+                        <a wire:click.prevent="sortBy('stock_warning')" href="#" role="button">
+                            {{ __('Stock warning') }}
+                            @include('inclues._sort-icon', ['field' => 'stock_warning'])
+                        </a>
+                    </th>
+                    <th scope="col" class="align-middle text-center">
+                        <a wire:click.prevent="sortBy('re_order_level')" href="#" role="button">
+                            {{ __('Re order level') }}
+                            @include('inclues._sort-icon', ['field' => 're_order_level'])
+                        </a>
+                    </th>
+                    <th scope="col" class="align-middle text-center">
+                        <a wire:click.prevent="sortBy('manage_serialized')" href="#" role="button">
+                            {{ __('Manage serialized') }}
+                            @include('inclues._sort-icon', ['field' => 'manage_serialized'])
+                        </a>
+                    </th>
+                    <th scope="col" class="align-middle text-center">
+                        <a wire:click.prevent="sortBy('condition')" href="#" role="button">
+                            {{ __('Condition') }}
+                            @include('inclues._sort-icon', ['field' => 'condition'])
+                        </a>
+                    </th>
+                    <th scope="col" class="align-middle text-center">
+                        <a wire:click.prevent="sortBy('supplier')" href="#" role="button">
+                            {{ __('Supplier') }}
+                            @include('inclues._sort-icon', ['field' => 'supplier'])
+                        </a>
+                    </th>
+                    <th scope="col" class="align-middle text-center">
+                        <a wire:click.prevent="sortBy('physical_location')" href="#" role="button">
+                            {{ __('Physical location') }}
+                            @include('inclues._sort-icon', ['field' => 'physical_location'])
+                        </a>
+                    </th>
+                    <th scope="col" class="align-middle text-center">
+                        <a wire:click.prevent="sortBy('warranty')" href="#" role="button">
+                            {{ __('Warranty') }}
+                            @include('inclues._sort-icon', ['field' => 'warranty'])
+                        </a>
+                    </th>
+                    <th scope="col" class="align-middle text-center">
+                        <a wire:click.prevent="sortBy('warranty_time_frame')" href="#" role="button">
+                            {{ __('Warranty time frame') }}
+                            @include('inclues._sort-icon', ['field' => 'warranty_time_frame'])
+                        </a>
+                    </th>
+                    <th scope="col" class="align-middle text-center">
+                        <a wire:click.prevent="sortBy('imei')" href="#" role="button">
+                            {{ __('IMEI') }}
+                            @include('inclues._sort-icon', ['field' => 'imei'])
+                        </a>
+                    </th>
+                    <th scope="col" class="align-middle text-center">
+                        <a wire:click.prevent="sortBy('display_on_point_of_sale')" href="#" role="button">
+                            {{ __('Display on point of sale') }}
+                            @include('inclues._sort-icon', ['field' => 'display_on_point_of_sale'])
+                        </a>
+                    </th>
+
+                    <th scope="col" class="align-middle text-center">
+                        <a wire:click.prevent="sortBy('display_on_widget')" href="#" role="button">
+                            {{ __('Display on widget') }}
+                            @include('inclues._sort-icon', ['field' => 'display_on_widget'])
+                        </a>
+                    </th>
+                    <th scope="col" class="align-middle text-center">
+                        <a wire:click.prevent="sortBy('comission_percentage')" href="#" role="button">
+                            {{ __('Comission percentage') }}
+                            @include('inclues._sort-icon', ['field' => 'comission_percentage'])
+                        </a>
+                    </th>
+                    <th scope="col" class="align-middle text-center">
+                        <a wire:click.prevent="sortBy('comission_amount')" href="#" role="button">
+                            {{ __('Comission amoutn') }}
+                            @include('inclues._sort-icon', ['field' => 'comission_amount'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
@@ -107,20 +264,94 @@
                                 alt="">
                         </td>
                         <td class="align-middle text-center">
-                            {{-- {{ $product->name }} --}}
-                            Dummy Phone Name
+                            {{ $product->name }}
                         </td>
                         <td class="align-middle text-center">
-                            {{-- {{ $product->code }} --}}
-                            Dummy Code
+                            {{ $product->description }}
                         </td>
                         <td class="align-middle text-center">
-                            {{-- {{ $product->category ? $product->category->name : '--' }} --}}
-                            Dummy category
+                            {{ $product->manufacturer }}
                         </td>
                         <td class="align-middle text-center">
-                            {{-- {{ $product->quantity }} --}}
-                            Dummy quantity
+                            {{ $product->device }}
+                        </td>
+                        <td class="align-middle text-center">
+                            {{ $product->sku }}
+                        </td>
+                        <td class="align-middle text-center">
+                            {{ $product->upc_code }}
+                        </td>
+                        <td class="align-middle text-center">
+                            {{ $product->is_barcode }}
+                        </td>
+                        <td class="align-middle text-center">
+                            {{ $product->valuation_method }}
+                        </td>
+                        <td class="align-middle text-center">
+                            {{ $product->new_stock_adjustment }}
+                        </td>
+                        <td class="align-middle text-center">
+                            {{ $product->new_inventory_item_cost }}
+                        </td>
+                        <td class="align-middle text-center">
+                            {{ $product->tax_class }}
+                        </td>
+                        <td class="align-middle text-center">
+                            {{ $product->tax_inclusive }}
+                        </td>
+                        <td class="align-middle text-center">
+                            {{ $product->retail_price }}
+                        </td>
+                        <td class="align-middle text-center">
+                            {{ $product->cost_price }}
+                        </td>
+                        <td class="align-middle text-center">
+                            {{ $product->sale_price }}
+                        </td>
+                        <td class="align-middle text-center">
+                            {{ $product->minimum_price }}
+                        </td>
+                        <td class="align-middle text-center">
+                            {{ $product->on_hand_quantity }}
+                        </td>
+                        <td class="align-middle text-center">
+                            {{ $product->stock_warning }}
+                        </td>
+                        <td class="align-middle text-center">
+                            {{ $product->re_order_level }}
+                        </td>
+                        <td class="align-middle text-center">
+                            {{ $product->manage_serialized }}
+                        </td>
+                        <td class="align-middle text-center">
+                            {{ $product->condition }}
+                        </td>
+                        <td class="align-middle text-center">
+                            {{ $product->supplier }}
+                        </td>
+                        <td class="align-middle text-center">
+                            {{ $product->physical_location }}
+                        </td>
+                        <td class="align-middle text-center">
+                            {{ $product->warranty }}
+                        </td>
+                        <td class="align-middle text-center">
+                            {{ $product->warranty_time_frame }}
+                        </td>
+                        <td class="align-middle text-center">
+                            {{ $product->imei }}
+                        </td>
+                        <td class="align-middle text-center">
+                            {{ $product->display_on_point_of_sale }}
+                        </td>
+                        <td class="align-middle text-center">
+                            {{ $product->display_on_widget }}
+                        </td>
+                        <td class="align-middle text-center">
+                            {{ $product->comission_percentage }}
+                        </td>
+                        <td class="align-middle text-center">
+                            {{ $product->comission_amount }}
                         </td>
                         <td class="align-middle text-center" style="width: 10%">
                             <x-button.show class="btn-icon" route="{{ route('products.show', $product->uuid) }}" />
@@ -131,9 +362,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td class="align-middle text-center" colspan="7">
-                            No results found
-                        </td>
+                        <td class="align-middle text-center" colspan="37">No results found</td>
                     </tr>
                 @endforelse
             </tbody>
@@ -142,12 +371,12 @@
 
     <div class="card-footer d-flex align-items-center">
         <p class="m-0 text-secondary">
-            Showing <span>{{ $products->firstItem() }}</span>
-            to <span>{{ $products->lastItem() }}</span> of <span>{{ $products->total() }}</span> entries
+            {{-- Showing <span>{{ $products->firstItem() }}</span> --}}
+            {{-- to <span>{{ $products->lastItem() }}</span> of <span>{{ $products->total() }}</span> entries --}}
         </p>
 
         <ul class="pagination m-0 ms-auto">
-            {{ $products->links() }}
+            {{-- {{ $products->links() }} --}}
         </ul>
     </div>
 </div>

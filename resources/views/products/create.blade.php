@@ -62,7 +62,7 @@
                                 <div class="card-body">
                                     <div class="row row-cards">
                                         <div class="col-md-12">
-                                            <x-input name="Name" id="name" value="{{ old('name') }}" />
+                                            <x-input name="name" id="name" value="{{ old('name') }}" />
                                         </div>
 
                                         <div class="col-sm-6 col-md-6">
@@ -104,11 +104,10 @@
                                         </div>
 
                                         <div class="col-sm-6 col-md-6 mb-3">
-                                            <label for="category_id" class="form-label">
+                                            <label for="bar_code" class="form-label">
                                                 Is Barcode
                                             </label>
-                                            <select name="repair_part_id" id="repair_part_id"
-                                                class="form-select @error('repair_part_id') is-invalid @enderror">
+                                            <select name="bar_code" id="bar_code" class="form-select">
                                                 <option value="true">Yes</option>
                                                 <option value="false">No</option>
                                             </select>
