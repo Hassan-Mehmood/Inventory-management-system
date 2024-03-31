@@ -7,6 +7,7 @@ use App\Http\Requests\Product\StoreProductRequest;
 use App\Http\Requests\Product\UpdateProductRequest;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\SubCategory;
 use App\Models\Unit;
 use Haruncpi\LaravelIdGenerator\IdGenerator;
 use Illuminate\Http\Request;
@@ -26,19 +27,21 @@ class ProductController extends Controller
 
 	public function create(Request $request)
 	{
-		// $categories = Category::where("user_id", auth()->id())->get(['id', 'name']);
-		// $units = Unit::where("user_id", auth()->id())->get(['id', 'name']);
+		$categories = Category::where("user_id", auth()->id())->get(['id', 'name']);
 
-		// if ($request->has('category')) {
-		// 	$categories = Category::where("user_id", auth()->id())->whereSlug($request->get('category'))->get();
-		// }
+		$sub_categories = SubCategory::where("category_id", $categories[0]['id'])->get(['id', 'sub_category_name']);
+
+		if ($request->has('category')) {
+			$categories = Category::where("user_id", auth()->id())->whereSlug($request->get('category'))->get();
+		}
 
 		// if ($request->has('unit')) {
 		// 	$units = Unit::where("user_id", auth()->id())->whereSlug($request->get('unit'))->get();
 		// }
 
 		return view('products.create', [
-			// 'categories' => $categories,
+			'categories' => $categories,
+			'sub_categories' => $sub_categories,
 			// 'units' => $units,
 		]);
 	}

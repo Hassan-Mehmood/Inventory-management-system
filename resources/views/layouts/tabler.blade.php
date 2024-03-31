@@ -445,6 +445,9 @@
                                             <a class="dropdown-item" href="{{ route('categories.index') }}">
                                                 {{ __('Categories') }}
                                             </a>
+                                            <a class="dropdown-item" href="{{ route('subcategories.index') }}">
+                                                {{ __('Sub-categories') }}
+                                            </a>
                                             <a class="dropdown-item" href="{{ route('units.index') }}">
                                                 {{ __('Units') }}
                                             </a>

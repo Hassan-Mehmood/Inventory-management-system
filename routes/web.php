@@ -16,6 +16,7 @@ use App\Http\Controllers\Product\ProductImportController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Purchase\PurchaseController;
 use App\Http\Controllers\Quotation\QuotationController;
+use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UnitController;
 use App\Http\Controllers\UserController;
@@ -62,6 +63,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 	Route::resource('/customers', CustomerController::class);
 	Route::resource('/suppliers', SupplierController::class);
 	Route::resource('/categories', CategoryController::class);
+	Route::resource('/subcategories', SubCategoryController::class);
 	Route::resource('/units', UnitController::class);
 
 	// Route Products
