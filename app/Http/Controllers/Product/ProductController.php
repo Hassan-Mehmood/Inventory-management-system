@@ -124,13 +124,13 @@ class ProductController extends Controller
 	{
 		$product = Product::where("uuid", $uuid)->firstOrFail();
 		// Generate a barcode
-		$generator = new BarcodeGeneratorHTML();
+		// $generator = new BarcodeGeneratorHTML();
 
-		$barcode = $generator->getBarcode($product->code, $generator::TYPE_CODE_128);
+		// $barcode = $generator->getBarcode($product->code, $generator::TYPE_CODE_128);
 
 		return view('products.show', [
 			'product' => $product,
-			'barcode' => $barcode,
+			// 'barcode' => $barcode,
 		]);
 	}
 
