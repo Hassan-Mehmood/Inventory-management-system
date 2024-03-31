@@ -29,7 +29,7 @@ class ProductController extends Controller
 	{
 		$categories = Category::where("user_id", auth()->id())->get(['id', 'name']);
 
-		$sub_categories = SubCategory::where("category_id", $categories[0]['id'])->get(['id', 'sub_category_name']);
+		// $sub_categories = SubCategory::where("category_id", $categories[0]['id'])->get(['id', 'sub_category_name']);
 
 		if ($request->has('category')) {
 			$categories = Category::where("user_id", auth()->id())->whereSlug($request->get('category'))->get();
@@ -41,7 +41,7 @@ class ProductController extends Controller
 
 		return view('products.create', [
 			'categories' => $categories,
-			'sub_categories' => $sub_categories,
+			// 'sub_categories' => $sub_categories,
 			// 'units' => $units,
 		]);
 	}
@@ -58,8 +58,7 @@ class ProductController extends Controller
 
 		Product::create([
 			'name' => $request->name,
-			'category' => $request->category,
-			'sub_category' => $request->sub_category,
+			'category_id' => $request->category,
 			'description' => $request->description,
 			'manufacturer' => $request->manufacturer,
 			'device' => $request->device,
@@ -85,8 +84,8 @@ class ProductController extends Controller
 			'warranty' => $request->warranty,
 			'warranty_time_frame' => $request->warranty_time_frame,
 			'imei' => $request->imei,
-			'display_pos' => $request->display_pos,
-			'display_widget' => $request->display_widget,
+			'display_on_point_of_sale' => $request->display_pos,
+			'display_on_widget' => $request->display_widget,
 			'comission_percentage' => $request->comission_percentage,
 			'comission_amount' => $request->comission_amount,
 			'user_id' => auth()->id(),

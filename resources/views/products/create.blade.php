@@ -66,10 +66,10 @@
                                         </div>
 
                                         <div class="col-sm-6 col-md-6 mb-3">
-                                            <label for="bar_code" class="form-label">
+                                            <label for="category" class="form-label">
                                                 Categories
                                             </label>
-                                            <select name="categories" id="categories" class="form-select">
+                                            <select name="category" id="category" class="form-select">
                                                 @foreach ($categories as $category)
                                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                                                 @endforeach
@@ -81,11 +81,10 @@
                                                 Sub Categories
                                             </label>
                                             <select name="categories" id="categories" class="form-select">
-
                                                 <option value="">Select a sub category</option>
-                                                @foreach ($sub_categories as $category)
+                                                {{-- @foreach ($sub_categories as $category)
                                                     <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                                @endforeach
+                                                @endforeach --}}
                                             </select>
                                         </div>
 
@@ -139,9 +138,9 @@
                                         </div>
 
                                         <div class="col-sm-6 col-md-6">
-                                            <x-input label="New Inventory Item Cost" name="new_inventory_item_cost"
-                                                id="new_inventory_item_cost"
-                                                value="{{ old('new_inventory_item_cost') }}" />
+                                            <x-input type="number" label="New Inventory Item Cost"
+                                                name="new_inventory_item_cost" id="new_inventory_item_cost"
+                                                placeholder="0" value="{{ old('new_inventory_item_cost') }}" />
                                         </div>
 
                                         <div class="col-sm-6 col-md-6">

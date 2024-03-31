@@ -27,7 +27,7 @@ class StoreProductRequest extends FormRequest
 			'product_image' => 'image|file|max:2048',
 			'name' => 'required|string',
 			'category' => 'required|string',
-			'sub_category' => 'required|string',
+			'sub_category' => 'string',
 			'description' => 'required|string',
 			'manufacturer' => 'required|string',
 			'device' => 'required|string',
