@@ -29,7 +29,7 @@ class ProductController extends Controller
 	{
 		$categories = Category::where("user_id", auth()->id())->get(['id', 'name']);
 
-		// $sub_categories = SubCategory::where("category_id", $categories[0]['id'])->get(['id', 'sub_category_name']);
+		$sub_categories = SubCategory::where("category_id", $categories[0]['id'])->get(['id', 'sub_category_name']);
 
 		if ($request->has('category')) {
 			$categories = Category::where("user_id", auth()->id())->whereSlug($request->get('category'))->get();
@@ -41,7 +41,7 @@ class ProductController extends Controller
 
 		return view('products.create', [
 			'categories' => $categories,
-			// 'sub_categories' => $sub_categories,
+			'sub_categories' => $sub_categories,
 			// 'units' => $units,
 		]);
 	}
@@ -91,32 +91,7 @@ class ProductController extends Controller
 			'user_id' => auth()->id(),
 			'slug' => Str::slug($request->name, '-'),
 			'uuid' => Str::uuid(),
-		]);
-
-
-		// Product::create([
-		// 	"code" => IdGenerator::generate([
-		// 		'table' => 'products',
-		// 		'field' => 'code',
-		// 		'length' => 4,
-		// 		'prefix' => 'PC'
-		// 	]),
-
-		// 	'product_image' => $image,
-		// 	'name' => $request->name,
-		// 	'category_id' => $request->category_id,
-		// 	'unit_id' => $request->unit_id,
-		// 	'quantity' => $request->quantity,
-		// 	'buying_price' => $request->buying_price,
-		// 	'selling_price' => $request->selling_price,
-		// 	'quantity_alert' => $request->quantity_alert,
-		// 	'tax' => $request->tax,
-		// 	'tax_type' => $request->tax_type,
-		// 	'notes' => $request->notes,
-		// 	"user_id" => auth()->id(),
-		// 	"slug" => Str::slug($request->name, '-'),
-		// 	"uuid" => Str::uuid()
-		// ]);
+		]); 
 
 
 		return to_route('products.index')->with('success', 'Product has been created!');
@@ -138,11 +113,15 @@ class ProductController extends Controller
 
 	public function edit($uuid)
 	{
+		$categories = Category::where("user_id", auth()->id())->get(['id', 'name']);  
+
+ 
 		$product = Product::where("uuid", $uuid)->firstOrFail();
 		return view('products.edit', [
 			'categories' => Category::where("user_id", auth()->id())->get(),
 			'units' => Unit::where("user_id", auth()->id())->get(),
-			'product' => $product
+			'sub_categories' =>SubCategory::all(),
+			'product' => $product,
 		]);
 	}
 

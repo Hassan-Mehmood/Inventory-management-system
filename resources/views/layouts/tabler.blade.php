@@ -410,6 +410,12 @@
                                             <a class="dropdown-item" href="{{ route('customers.index') }}">
                                                 {{ __('Customers') }}
                                             </a>
+                                            <a class="dropdown-item" href="{{ route('expenses.index') }}">
+                                                {{ __('Expenses') }}
+                                            </a>
+                                            <a class="dropdown-item" href="{{ route('expensescategory.index') }}">
+                                                {{ __('Expenses Category') }}
+                                            </a>
                                         </div>
                                     </div>
                                 </div>

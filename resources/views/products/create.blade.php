@@ -64,30 +64,8 @@
                                         <div class="col-md-12">
                                             <x-input name="name" id="name" value="{{ old('name') }}" />
                                         </div>
-
-                                        <div class="col-sm-6 col-md-6 mb-3">
-                                            <label for="category" class="form-label">
-                                                Categories
-                                            </label>
-                                            <select name="category" id="category" class="form-select">
-                                                @foreach ($categories as $category)
-                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
-
-                                        <div class="col-sm-6 col-md-6 mb-3">
-                                            <label for="bar_code" class="form-label">
-                                                Sub Categories
-                                            </label>
-                                            <select name="categories" id="categories" class="form-select">
-                                                <option value="">Select a sub category</option>
-                                                {{-- @foreach ($sub_categories as $category)
-                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                                @endforeach --}}
-                                            </select>
-                                        </div>
-
+                                        @livewire('tables.subcategory-select-component' )
+                                        
 
                                         <div class="col-md-12 mb-3">
                                             <label for="description" class="form-label">
@@ -128,8 +106,8 @@
                                         </div>
 
                                         <div class="col-sm-6 col-md-6">
-                                            <x-input label="Valuation method" name="valuation_method"
-                                                id="valuation_method" value="{{ old('valuation_method') }}" />
+                                            <x-input label="Valuation method" name="valuation_method" id="valuation_method"
+                                                value="{{ old('valuation_method') }}" />
                                         </div>
 
                                         <div class="col-sm-6 col-md-6">

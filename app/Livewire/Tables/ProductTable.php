@@ -3,7 +3,7 @@
 namespace App\Livewire\Tables;
 
 use Livewire\Component;
-use App\Models\Product;
+use App\Models\Product; 
 use Livewire\WithPagination;
 
 class ProductTable extends Component
@@ -11,7 +11,7 @@ class ProductTable extends Component
 	use WithPagination;
 
 	public $perPage = 5;
-
+	public $selectedValue;
 	public $search = '';
 
 	public $sortField = 'id';
@@ -31,7 +31,7 @@ class ProductTable extends Component
 	}
 
 	public function render()
-	{
+	{ 
 		return view('livewire.tables.product-table', [
 			'products' => Product::where("user_id", auth()->id())
 				->with(['category_id'])
@@ -39,5 +39,5 @@ class ProductTable extends Component
 				->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
 				->paginate($this->perPage)
 		]);
-	}
+	} 
 }

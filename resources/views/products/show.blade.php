@@ -32,38 +32,37 @@
                             </div>
                         </div>
                     </div>
-                    <!---
-                                                                                <div class="col-lg-8">
-                                                                                    <div class="card">
-                                                                                        <div class="card-body">
-                                                                                            <div class="card-title">
-                                                                                                Product Code
-                                                                                            </div>
-                                                                                            <div class="row row-cards">
-                                                                                                <div class="col-md-6">
-                                                                                                    <label class="small mb-1">
-                                                                                                        Product code
-                                                                                                    </label>
+                    {{-- <div class="col-lg-8">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title">
+                                    Product Code
+                                </div>
+                                <div class="row row-cards">
+                                    <div class="col-md-6">
+                                        <label class="small mb-1">
+                                            Product code
+                                        </label>
 
-                                                                                                    <div class="form-control">
-                                                                                                        {{ $product->code }}
-                                                                                                    </div>
-                                                                                                </div>
+                                        <div class="form-control">
+                                            {{ $product->code }}
+                                        </div>
+                                    </div>
 
-                                                                                                <div class="col-md-6 align-middle">
-                                                                                                    <label class="small mb-1">
-                                                                                                        Barcode
-                                                                                                    </label>
+                                    <div class="col-md-6 align-middle">
+                                        <label class="small mb-1">
+                                            Barcode
+                                        </label>
 
-                                                                                                    <div class="mt-1">
-                                                                                                        {{-- {!! $barcode !!} --}}
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                --->
+                                        <div class="mt-1">
+                                            {!! $barcode !!} 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> --}}
+
 
                     <div class="col-lg-8">
                         <div class="card">
@@ -81,7 +80,7 @@
                                         </tr>
                                         <tr>
                                             <td>Description</td>
-                                            <td>{{ $product->description }}</td>
+                                            <td>{{ $product->product_description }}</td>
                                         </tr>
                                         <tr>
                                             <td><span class="text-secondary">Manufacturer</span></td>

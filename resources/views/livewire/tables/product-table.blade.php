@@ -267,7 +267,7 @@
                             {{ $product->name }}
                         </td>
                         <td class="align-middle text-center">
-                            {{ $product->description }}
+                            {{ $product->product_description }}
                         </td>
                         <td class="align-middle text-center">
                             {{ $product->manufacturer }}

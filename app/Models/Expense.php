@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Category extends Model
+class Expense extends Model
 {
     use HasFactory;
 
@@ -18,10 +18,13 @@ class Category extends Model
     ];
 
     protected $fillable = [
-        'name',
-        'slug',
-        'short_code',
-        "user_id",
+        'user_id',
+        'expenses_category_id',
+        'expenses_name',
+        "expenses_amount",
+        "expenses_date",
+        "expenses_notes",
+        "slug",
     ];
 
     protected $casts = [
@@ -29,17 +32,16 @@ class Category extends Model
         'updated_at' => 'datetime',
     ];
 
-    public function products(): HasMany
+    public function expensecategory(): BelongsTo
     {
-        return $this->hasMany(Product::class, 'category_id', 'id');
-    }
-    public function subcategory(): HasMany
-    {
-        return $this->hasMany(SubCategory::class, 'category_id', 'id');
-    }
+        return $this->belongsTo(ExpenseCategory::class, 'expenses_category_id');
+    } 
+    
     public function scopeSearch($query, $value): void
     {
-        $query->where('name', 'like', "%{$value}%")
+        $query->where('expenses_name', 'like', "%{$value}%")
+            ->orWhere('expenses_amount', 'like', "%{$value}%")
+            ->orWhere('expenses_date', 'like', "%{$value}%")
             ->orWhere('slug', 'like', "%{$value}%");
     }
 

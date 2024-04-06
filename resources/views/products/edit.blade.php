@@ -80,31 +80,9 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-sm-6 col-md-6">
-                                            <div class="mb-3">
-                                                <label for="category_id" class="form-label">
-                                                    Product category
-                                                    <span class="text-danger">*</span>
-                                                </label>
+                                        @livewire('tables.subcategory-select-component', ['product' => $product])
 
-                                                <select name="category_id" id="category_id"
-                                                    class="form-select @error('category_id') is-invalid @enderror">
-                                                    <option selected="" disabled="">Select a category:</option>
-                                                    @foreach ($categories as $category)
-                                                        <option value="{{ $category->id }}"
-                                                            @if (old('category_id', $product->category_id) == $category->id) selected="selected" @endif>
-                                                            {{ $category->name }}</option>
-                                                    @endforeach
-                                                </select>
-
-                                                @error('category_id')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
-                                            </div>
-                                        </div>
-
+                                        
 
                                         <div class="col-sm-6 col-md-6">
                                             <div class="mb-3">
@@ -180,7 +158,10 @@
                                                     {{ __('Quantity') }}
                                                 </label>
 
-                                                <input class="form-control" name="quantity" type="text" readonly value="{{ old('quantity', $product->quantity) }}"  required="true" aria-required="true" style="color: var(--tblr-secondary);background-color: var(--tblr-bg-surface-secondary); opacity: 1;"/>
+                                                <input class="form-control" name="quantity" type="text" readonly
+                                                    value="{{ old('quantity', $product->quantity) }}" required="true"
+                                                    aria-required="true"
+                                                    style="color: var(--tblr-secondary);background-color: var(--tblr-bg-surface-secondary); opacity: 1;" />
 
 
                                                 {{-- <input type="text" id="quantity" name="quantity"

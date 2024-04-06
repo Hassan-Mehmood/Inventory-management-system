@@ -23,7 +23,7 @@ class SubCategory extends Model
 		'updated_at' => 'datetime',
 	];
 
-	public function category()
+	public function subcategory()
 	{
 		return $this->belongsTo(Category::class, 'category_id', 'id');
 	}

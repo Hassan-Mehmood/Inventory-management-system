@@ -2,12 +2,12 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
-class Category extends Model
+class ExpenseCategory extends Model
 {
     use HasFactory;
 
@@ -16,12 +16,11 @@ class Category extends Model
     protected $guarded = [
         'id',
     ];
-
+ 
     protected $fillable = [
-        'name',
-        'slug',
-        'short_code',
-        "user_id",
+        'user_id',
+        'expenses_category_name', 
+        'slug', 
     ];
 
     protected $casts = [
@@ -29,18 +28,15 @@ class Category extends Model
         'updated_at' => 'datetime',
     ];
 
-    public function products(): HasMany
+
+    public function expense(): HasMany
     {
-        return $this->hasMany(Product::class, 'category_id', 'id');
-    }
-    public function subcategory(): HasMany
-    {
-        return $this->hasMany(SubCategory::class, 'category_id', 'id');
-    }
+        return $this->hasMany(Expense::class, 'expenses_category_id', 'id');
+    } 
+    
     public function scopeSearch($query, $value): void
     {
-        $query->where('name', 'like', "%{$value}%")
-            ->orWhere('slug', 'like', "%{$value}%");
+        $query->where('expenses_category_name', 'like', "%{$value}%");
     }
 
     public function getRouteKeyName(): string

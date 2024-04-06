@@ -8,6 +8,8 @@ use App\Http\Controllers\Order\DueOrderController;
 use App\Http\Controllers\Order\OrderCompleteController;
 use App\Http\Controllers\Order\OrderController;
 use App\Http\Controllers\Order\OrderPendingController;
+use App\Http\Controllers\Expense\ExpenseController;
+use App\Http\Controllers\ExpenseCategory\ExpenseCategoryController;
 use App\Http\Controllers\PhoneRepairController;
 use App\Http\Controllers\PosController;
 use App\Http\Controllers\Product\ProductController;
@@ -80,6 +82,24 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 	//Route::post('/pos/invoice', [PosController::class, 'createInvoice'])->name('pos.createInvoice');
 	Route::post('invoice/create/', [InvoiceController::class, 'create'])->name('invoice.create');
+
+	// Route Expenses Category
+	Route::get('/expenses-category', [ExpenseCategoryController::class, 'index'])->name('expensescategory.index');   
+	Route::get('/expenses-category/create', [ExpenseCategoryController::class, 'create'])->name('expensescategory.create');
+	Route::post('/expenses-category/store', [ExpenseCategoryController::class, 'store'])->name('expensescategory.store');
+	Route::get('/expenses-category/view/{ExpenseCategory}', [ExpenseCategoryController::class, 'show'])->name('expensescategory.show'); 
+	Route::get('/expenses-category/edit/{ExpenseCategory}', [ExpenseCategoryController::class, 'edit'])->name('expensescategory.edit');
+	Route::put('/expenses-category/update/{ExpenseCategory}', [ExpenseCategoryController::class, 'update'])->name('expensescategory.update');
+	Route::delete('/expenses-category/delete/{ExpenseCategory}', [ExpenseCategoryController::class, 'destroy'])->name('expensescategory.destroy');
+
+	// Route Expenses
+	Route::get('/expenses', [ExpenseController::class, 'index'])->name('expenses.index');   
+	Route::get('/expenses/create', [ExpenseController::class, 'create'])->name('expenses.create');
+	Route::post('/expenses/store', [ExpenseController::class, 'store'])->name('expenses.store'); 
+	Route::get('/expenses/view/{Expense}', [ExpenseController::class, 'show'])->name('expenses.show'); 
+	Route::get('/expenses/edit/{Expense}', [ExpenseController::class, 'edit'])->name('expenses.edit');
+	Route::put('/expenses/update/{Expense}', [ExpenseController::class, 'update'])->name('expenses.update');
+	Route::delete('/expenses/delete/{Expense}', [ExpenseController::class, 'destroy'])->name('expenses.destroy');
 
 	// Route Orders
 	Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');

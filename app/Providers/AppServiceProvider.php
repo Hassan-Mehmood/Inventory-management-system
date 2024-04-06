@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Breadcrumbs\Breadcrumbs;
 use Illuminate\Pagination\Paginator;
 use Illuminate\Support\ServiceProvider;
-
+use Illuminate\Support\Facades\Schema;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -27,5 +27,6 @@ class AppServiceProvider extends ServiceProvider
         Request::macro('breadcrumbs', function (){
             return new Breadcrumbs($this);
         });
+        Schema::defaultStringLength(191);
     }
 }
