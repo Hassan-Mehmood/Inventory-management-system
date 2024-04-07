@@ -59,7 +59,7 @@ class ProductController extends Controller
 		Product::create([
 			'name' => $request->name,
 			'category_id' => $request->category,
-			'description' => $request->description,
+			'product_description' => $request->description,
 			'manufacturer' => $request->manufacturer,
 			'device' => $request->device,
 			'sku' => $request->sku,
@@ -91,7 +91,7 @@ class ProductController extends Controller
 			'user_id' => auth()->id(),
 			'slug' => Str::slug($request->name, '-'),
 			'uuid' => Str::uuid(),
-		]); 
+		]);
 
 
 		return to_route('products.index')->with('success', 'Product has been created!');
@@ -113,14 +113,13 @@ class ProductController extends Controller
 
 	public function edit($uuid)
 	{
-		$categories = Category::where("user_id", auth()->id())->get(['id', 'name']);  
+		// $categories = Category::where("user_id", auth()->id())->get(['id', 'name']);  
 
- 
 		$product = Product::where("uuid", $uuid)->firstOrFail();
+
 		return view('products.edit', [
 			'categories' => Category::where("user_id", auth()->id())->get(),
-			'units' => Unit::where("user_id", auth()->id())->get(),
-			'sub_categories' =>SubCategory::all(),
+			'subCategories' => SubCategory::all(),
 			'product' => $product,
 		]);
 	}
@@ -128,7 +127,7 @@ class ProductController extends Controller
 	public function update(UpdateProductRequest $request, $uuid)
 	{
 		$product = Product::where("uuid", $uuid)->firstOrFail();
-		$product->update($request->except('product_image'));
+		// $product->update($request->except('product_image'));
 
 		$image = $product->product_image;
 		if ($request->hasFile('product_image')) {
@@ -142,16 +141,38 @@ class ProductController extends Controller
 
 		$product->name = $request->name;
 		$product->slug = Str::slug($request->name, '-');
-		$product->category_id = $request->category_id;
-		$product->unit_id = $request->unit_id;
-		$product->quantity = $request->quantity;
-		$product->buying_price = $request->buying_price;
-		$product->selling_price = $request->selling_price;
-		$product->quantity_alert = $request->quantity_alert;
-		$product->tax = $request->tax;
-		$product->tax_type = $request->tax_type;
-		$product->notes = $request->notes;
-		$product->product_image = $image;
+		$product->category_id = $request->category;
+		$product->product_description = $request->description;
+		$product->manufacturer = $request->manufacturer;
+		$product->device = $request->device;
+		$product->sku = $request->sku;
+		$product->upc_code = $request->upc_code;
+		$product->is_barcode = $request->bar_code === 'true' ? 1 : 0;
+		$product->valuation_method = $request->valuation_method;
+		$product->new_stock_adjustment = $request->new_stock_adjustment;
+		$product->new_inventory_item_cost = $request->new_inventory_item_cost;
+		$product->tax_class = $request->tax_class;
+		$product->tax_inclusive = $request->tax_inclusive;
+		$product->retail_price = $request->retail_price;
+		$product->cost_price = $request->cost_price;
+		$product->sale_price = $request->sale_price;
+		$product->minimum_price = $request->minimum_price;
+		$product->on_hand_quantity = $request->on_hand_quantity;
+		$product->stock_warning = $request->stock_warning;
+		$product->re_order_level = $request->reorder_level;
+		$product->manage_serialized = $request->manage_serialized;
+		$product->condition = $request->condition;
+		$product->supplier = $request->supplier;
+		$product->physical_location = $request->physical_location;
+		$product->warranty = $request->warranty;
+		$product->warranty_time_frame = $request->warranty_time_frame;
+		$product->imei = $request->imei;
+		$product->display_on_point_of_sale = $request->display_on_point_of_sale === 'true' ? 1 : 0;
+		$product->display_on_widget = $request->display_on_widget === 'true' ? 1 : 0;
+		$product->comission_percentage = $request->comission_percentage;
+		$product->comission_amount = $request->comission_amount;
+		$product->user_id = auth()->id();
+		$product->uuid = Str::uuid();
 		$product->save();
 
 

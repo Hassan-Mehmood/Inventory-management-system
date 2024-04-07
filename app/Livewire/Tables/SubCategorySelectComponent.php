@@ -11,23 +11,24 @@ use App\Models\Category;
 
 class SubCategorySelectComponent extends Component
 {
-    public $selectedCategory = null;
-    public $selectedSubCategory;
-    public function mount($product)
-    {
-        $this->selectedCategory = $product->category_id;
-        $this->selectedSubCategory = $product->category_id;
-    }
-    public function render()
-    {
-        $categories = Category::where("user_id", auth()->id())->get(['id', 'name']);
-        /* for fetching subcategory recode */
-        if (!$this->selectedCategory) {
-            $this->selectedCategory = $categories[0]['id'];
-        }
+	public $selectedCategory = null;
+	public $subCategories = [];
+	public function mount(
+		// $product
+	) {
+		// $this->selectedCategory = $product->category_id;
+		// $this->selectedSubCategory = $product->category_id;
+	}
 
-        // $sub_categories = SubCategory::all();
+	public function getSubCategories()
+	{
+		$this->subCategories = Subcategory::where('category_id', $this->selectedCategory)->get();
+	}
 
-        return view('livewire.tables.subcategory-select-component', compact('categories'));
-    }
+	public function render()
+	{
+		$categories = Category::where("user_id", auth()->id())->get(['id', 'name']);
+
+		return view('livewire.tables.subcategory-select-component', compact('categories'));
+	}
 }

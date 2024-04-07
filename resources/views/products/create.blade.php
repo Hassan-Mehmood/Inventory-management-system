@@ -64,8 +64,7 @@
                                         <div class="col-md-12">
                                             <x-input name="name" id="name" value="{{ old('name') }}" />
                                         </div>
-                                        @livewire('tables.subcategory-select-component' )
-                                        
+                                        @livewire('tables.subcategory-select-component')
 
                                         <div class="col-md-12 mb-3">
                                             <label for="description" class="form-label">
@@ -117,8 +116,8 @@
 
                                         <div class="col-sm-6 col-md-6">
                                             <x-input type="number" label="New Inventory Item Cost"
-                                                name="new_inventory_item_cost" id="new_inventory_item_cost"
-                                                placeholder="0" value="{{ old('new_inventory_item_cost') }}" />
+                                                name="new_inventory_item_cost" id="new_inventory_item_cost" placeholder="0"
+                                                value="{{ old('new_inventory_item_cost') }}" />
                                         </div>
 
                                         <div class="col-sm-6 col-md-6">

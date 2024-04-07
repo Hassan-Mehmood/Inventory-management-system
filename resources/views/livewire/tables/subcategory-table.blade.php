@@ -59,7 +59,7 @@
                 @forelse ($subcategories as $category)
                     <tr>
                         <td class="align-middle text-center" style="width: 10%">
-                            {{ $loop->index }}
+                            {{ ++$loop->index }}
                         </td>
                         <td class="align-middle text-center">
                             {{ $category->sub_category_name }}
