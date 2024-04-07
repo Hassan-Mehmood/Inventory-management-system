@@ -11,9 +11,9 @@ return new class extends Migration {
 	public function up(): void
 	{
 
-		// Schema::table('products', function (Blueprint $table) {
-		// 	$table->dropForeign(['unit_id']);
-		// });
+		Schema::table('products', function (Blueprint $table) {
+			$table->dropForeign(['unit_id']);
+		});
 
 
 		Schema::table('products', function (Blueprint $table) {
@@ -34,6 +34,10 @@ return new class extends Migration {
 			$table->decimal('tax')->after('quantity_alert');
 			$table->string('tax_type')->after('tax');
 			$table->string('notes')->after('tax_type');
+		});
+
+		Schema::table('products', function (Blueprint $table) {
+			$table->foreignId('unit_id')->after('notes')->constrained('units');
 		});
 	}
 };
