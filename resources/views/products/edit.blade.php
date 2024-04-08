@@ -80,7 +80,7 @@
                                             </div>
                                         </div>
 
-                                        @livewire('tables.subcategory-select-component', ['product' => $product])
+                                        @livewire('tables.subcategory-select-component', ['categories' => $categories, 'product' => $product])
 
 
                                         <div class="col-md-12 mb-3">
@@ -88,7 +88,7 @@
                                                 {{ __('Decription') }}
                                             </label>
 
-                                            <textarea name="description" id="description" rows="5" class="form-control" placeholder="Description...">{{ old('description') }}</textarea>
+                                            <textarea name="description" id="description" rows="5" class="form-control" placeholder="Description...">{{ old('product_description', $product->product_description) }}</textarea>
                                         </div>
 
                                         <div class="col-sm-6 col-md-6">

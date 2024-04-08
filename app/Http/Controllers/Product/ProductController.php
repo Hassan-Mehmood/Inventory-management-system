@@ -29,20 +29,15 @@ class ProductController extends Controller
 	{
 		$categories = Category::where("user_id", auth()->id())->get(['id', 'name']);
 
-		$sub_categories = SubCategory::where("category_id", $categories[0]['id'])->get(['id', 'sub_category_name']);
+		// $sub_categories = SubCategory::where("category_id", $categories[0]['id'])->get(['id', 'sub_category_name']);
 
 		if ($request->has('category')) {
 			$categories = Category::where("user_id", auth()->id())->whereSlug($request->get('category'))->get();
 		}
 
-		// if ($request->has('unit')) {
-		// 	$units = Unit::where("user_id", auth()->id())->whereSlug($request->get('unit'))->get();
-		// }
-
 		return view('products.create', [
 			'categories' => $categories,
-			'sub_categories' => $sub_categories,
-			// 'units' => $units,
+			// 'sub_categories' => $sub_categories,
 		]);
 	}
 
@@ -59,6 +54,7 @@ class ProductController extends Controller
 		Product::create([
 			'name' => $request->name,
 			'category_id' => $request->category,
+			'sub_category' => $request->sub_category,
 			'product_description' => $request->description,
 			'manufacturer' => $request->manufacturer,
 			'device' => $request->device,
@@ -113,13 +109,12 @@ class ProductController extends Controller
 
 	public function edit($uuid)
 	{
-		// $categories = Category::where("user_id", auth()->id())->get(['id', 'name']);  
+		$categories = Category::where("user_id", auth()->id())->get(['id', 'name']);
 
 		$product = Product::where("uuid", $uuid)->firstOrFail();
 
 		return view('products.edit', [
-			'categories' => Category::where("user_id", auth()->id())->get(),
-			'subCategories' => SubCategory::all(),
+			'categories' => $categories,
 			'product' => $product,
 		]);
 	}
@@ -142,6 +137,7 @@ class ProductController extends Controller
 		$product->name = $request->name;
 		$product->slug = Str::slug($request->name, '-');
 		$product->category_id = $request->category;
+		$product->sub_category = $request->sub_category;
 		$product->product_description = $request->description;
 		$product->manufacturer = $request->manufacturer;
 		$product->device = $request->device;

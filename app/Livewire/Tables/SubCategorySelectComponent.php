@@ -1,34 +1,48 @@
 <?php
 
-// app/Http/Livewire/SelectComponent.php
-
 namespace App\Livewire\Tables;
 
-use Illuminate\Support\Facades\Log;
+use App\Models\Product;
 use Livewire\Component;
 use App\Models\Subcategory;
 use App\Models\Category;
 
 class SubCategorySelectComponent extends Component
 {
-	public $selectedCategory = null;
+	public $category = null;
+	public $categories = [];
+	public $product = null;
+	public $subCategory = null;
 	public $subCategories = [];
-	public function mount(
-		// $product
-	) {
-		// $this->selectedCategory = $product->category_id;
-		// $this->selectedSubCategory = $product->category_id;
+
+	public function mount($categories, $product = null)
+	{
+		$this->categories = $categories;
+
+		// if categories are available fetch subcategories for that particular category
+		if ($categories) {
+			$this->subCategories = Subcategory::where('category_id', $categories[0]['id'])->get();
+		}
+
+		// if product is passed as props that means it is beign called from edit page so fetch subcategory for that product category
+		if ($product) {
+			$this->subCategories = Subcategory::where('category_id', $product['category_id'])->get();
+		}
+
+		if ($categories && $product) {
+			$this->category = Category::where('id', $product['category_id'])->firstOrFail()['id'];
+		}
+
+
 	}
 
 	public function getSubCategories()
 	{
-		$this->subCategories = Subcategory::where('category_id', $this->selectedCategory)->get();
+		$this->subCategories = Subcategory::where('category_id', $this->category)->get();
 	}
 
 	public function render()
 	{
-		$categories = Category::where("user_id", auth()->id())->get(['id', 'name']);
-
-		return view('livewire.tables.subcategory-select-component', compact('categories'));
+		return view('livewire.tables.subcategory-select-component');
 	}
 }
