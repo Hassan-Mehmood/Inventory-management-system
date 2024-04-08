@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateSubCategoryRequest;
 use App\Models\Category;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
@@ -34,41 +35,39 @@ class SubCategoryController extends Controller
 
 		return redirect()
 			->route('subcategories.index')
-			->with('success', 'Category has been created!');
+			->with('success', 'Sub Category has been created!');
 	}
 
-	// public function show(Category $category)
-	// {
-	// 	return view('categories.show', [
-	// 		'category' => $category
-	// 	]);
-	// }
+	public function show(SubCategory $subcategory)
+	{
+		return view('categories.show', [
+			'subcategory' => $subcategory
+		]);
+	}
 
-	// public function edit(Category $category)
-	// {
-	// 	return view('categories.edit', [
-	// 		'category' => $category
-	// 	]);
-	// }
+	public function edit(SubCategory $subcategory)
+	{
+		return view('subcategories.edit', [
+			'subcategory' => $subcategory
+		]);
+	}
+	public function update(UpdateSubCategoryRequest $request, SubCategory $subcategory)
+	{
+		$subcategory->update([
+			"sub_category_name" => $request->sub_category_name,
+		]);
 
-	// public function update(UpdateCategoryRequest $request, Category $category)
-	// {
-	// 	$category->update([
-	// 		"name" => $request->name,
-	// 		"slug" => Str::slug($request->name)
-	// 	]);
+		return redirect()
+			->route('subcategories.index')
+			->with('success', 'Sub Category has been updated!');
+	}
 
-	// 	return redirect()
-	// 		->route('categories.index')
-	// 		->with('success', 'Category has been updated!');
-	// }
+	public function destroy(SubCategory $subcategory)
+	{
+		$subcategory->delete();
 
-	// public function destroy(Category $category)
-	// {
-	// 	$category->delete();
-
-	// 	return redirect()
-	// 		->route('categories.index')
-	// 		->with('success', 'Category has been deleted!');
-	// }
+		return redirect()
+			->route('subcategories.index')
+			->with('success', 'Sub Category has been deleted!');
+	}
 }

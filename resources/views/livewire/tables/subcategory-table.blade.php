@@ -64,6 +64,11 @@
                         <td class="align-middle text-center">
                             {{ $category->sub_category_name }}
                         </td>
+                        <td class="align-middle text-center">
+                            <x-button.edit class="btn-icon" route="{{ route('subcategories.edit', $category) }}" />
+                            <x-button.delete class="btn-icon" route="{{ route('subcategories.destroy', $category) }}"
+                                onclick="return confirm('Are you sure to remove sub category {{ $category->sub_category_name }} ?!')" />
+                        </td>
                     </tr>
                 @empty
                     <tr>
