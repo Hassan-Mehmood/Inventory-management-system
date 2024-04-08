@@ -95,8 +95,8 @@ class Product extends Model
 
 	public function scopeSearch($query, $value): void
 	{
-		$query->where('name', 'like', "%{$value}%")
-			->orWhere('category_id', 'like', "%{$value}%");
+		$query->where('products.name', 'like', "%{$value}%")
+			->orWhere('products.category_id', 'like', "%{$value}%");
 	}
 	/**
 	 * Get the user that owns the Category
