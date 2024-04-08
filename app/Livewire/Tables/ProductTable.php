@@ -30,29 +30,8 @@ class ProductTable extends Component
 		$this->sortField = $field;
 	}
 
-	// public function render()
-	// {
-	// 	// 'products' => Product::join('categories', 'products.category_id', '=', 'categories.id')
-	// 	return view('livewire.tables.product-table', [
-	// 		'products' => Product::where("user_id", auth()->id())
-	// 			->with(['category_id'])
-	// 			->search($this->search)
-	// 			->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
-	// 			->paginate($this->perPage)
-	// 	]);
-	// }
 	public function render()
 	{
-
-		$products = Product::join('categories', 'products.category_id', '=', 'categories.id')
-			->where("products.user_id", auth()->id())
-			->with(['category_id'])
-			->search($this->search)
-			->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
-			->paginate($this->perPage);
-
-		// dd($products);
-
 		return view('livewire.tables.product-table', [
 			'products' => Product::join('categories', 'products.category_id', '=', 'categories.id')
 				->join('sub_categories', 'categories.id', '=', 'sub_categories.category_id')
@@ -63,13 +42,6 @@ class ProductTable extends Component
 				->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
 				->paginate($this->perPage)
 		]);
-		// return view('livewire.tables.product-table', [
-		// 	'products' => Product::where("user_id", auth()->id())
-		// 		->with(['category_id'])
-		// 		->search($this->search)
-		// 		->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
-		// 		->paginate($this->perPage)
-		// ]);
 	}
 
 }
