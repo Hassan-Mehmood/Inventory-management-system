@@ -28,6 +28,7 @@ class ProductController extends Controller
 	public function create(Request $request)
 	{
 		$categories = Category::where("user_id", auth()->id())->get(['id', 'name']);
+		$product = Product::where('uuid', auth()->id())->first();
 
 		// $sub_categories = SubCategory::where("category_id", $categories[0]['id'])->get(['id', 'sub_category_name']);
 
@@ -37,6 +38,7 @@ class ProductController extends Controller
 
 		return view('products.create', [
 			'categories' => $categories,
+			'product' => $product
 			// 'sub_categories' => $sub_categories,
 		]);
 	}
