@@ -90,7 +90,6 @@
                         </td>
                         <td class="align-middle text-center">
                             {{ $purchase->supplier->name }}
-                            {{-- Phone name --}}
                         </td>
                         <td class="align-middle text-center">
                             {{ $purchase->date->format('d-m-Y') }}
