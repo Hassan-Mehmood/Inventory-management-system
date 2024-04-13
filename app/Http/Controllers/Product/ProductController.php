@@ -68,9 +68,10 @@ class ProductController extends Controller
 			'cost_price' => $request->cost_price,
 			'sale_price' => $request->sale_price,
 			'minimum_price' => $request->minimum_price,
+			'on_hand_quantity' => $request->on_hand_quantity,
 			'quantity' => $request->on_hand_quantity,
 			'stock_warning' => $request->stock_warning,
-			'reorder_level' => $request->reorder_level,
+			're_order_level' => $request->reorder_level,
 			'manage_serialized' => $request->manage_serialized,
 			'condition' => $request->condition,
 			'supplier' => $request->supplier,
@@ -152,6 +153,7 @@ class ProductController extends Controller
 		$product->sale_price = $request->sale_price;
 		$product->minimum_price = $request->minimum_price;
 		$product->on_hand_quantity = $request->on_hand_quantity;
+		$product->quantity = $request->on_hand_quantity;
 		$product->stock_warning = $request->stock_warning;
 		$product->re_order_level = $request->reorder_level;
 		$product->manage_serialized = $request->manage_serialized;
