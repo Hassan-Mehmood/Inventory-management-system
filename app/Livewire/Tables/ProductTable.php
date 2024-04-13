@@ -10,7 +10,7 @@ class ProductTable extends Component
 {
 	use WithPagination;
 
-	public $perPage = 5;
+	public $perPage = 105;
 	public $selectedValue;
 	public $search = '';
 
@@ -32,15 +32,18 @@ class ProductTable extends Component
 
 	public function render()
 	{
+
+		$products = Product::join('categories', 'products.category_id', '=', 'categories.id')
+			->join('sub_categories', 'products.sub_category', '=', 'sub_categories.id')
+			->where("products.user_id", auth()->id())
+			->select('products.name as product_name', 'categories.name as category_name', 'products.*', 'sub_categories.sub_category_name')
+			->with(['category_id'])
+			->search($this->search)
+			->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
+			->paginate($this->perPage);
+
 		return view('livewire.tables.product-table', [
-			'products' => Product::join('categories', 'products.category_id', '=', 'categories.id')
-				->join('sub_categories', 'categories.id', '=', 'sub_categories.category_id')
-				->where("products.user_id", auth()->id())
-				->select('products.name as product_name', 'categories.name as category_name', 'products.*', 'sub_categories.sub_category_name')
-				->with(['category_id'])
-				->search($this->search)
-				->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
-				->paginate($this->perPage)
+			'products' => $products
 		]);
 	}
 

@@ -7,11 +7,7 @@ use App\Http\Requests\Product\StoreProductRequest;
 use App\Http\Requests\Product\UpdateProductRequest;
 use App\Models\Category;
 use App\Models\Product;
-use App\Models\SubCategory;
-use App\Models\Unit;
-use Haruncpi\LaravelIdGenerator\IdGenerator;
 use Illuminate\Http\Request;
-use Picqer\Barcode\BarcodeGeneratorHTML;
 use Str;
 
 class ProductController extends Controller
