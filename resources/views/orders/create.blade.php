@@ -197,7 +197,7 @@
                                             {{--- <th scope="col">No.</th> ---}}
                                             <th scope="col">Name</th>
                                             <th scope="col">Quantity</th>
-                                            <th scope="col">Unit</th>
+                                            {{-- <th scope="col">Unit</th> --}}
                                             <th scope="col">Price</th>
                                             <th scope="col">Action</th>
                                         </tr>
@@ -218,9 +218,9 @@
                                             <td class="text-center">
                                                 {{ $product->quantity }}
                                             </td>
-                                            <td class="text-center">
+                                            {{-- <td class="text-center">
                                                 {{ $product->unit->name }}
-                                            </td>
+                                            </td> --}}
                                             <td class="text-center">
                                                 {{ number_format($product->selling_price, 2) }}
                                             </td>
