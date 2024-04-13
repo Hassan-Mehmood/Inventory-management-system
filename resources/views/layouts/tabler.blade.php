@@ -356,8 +356,8 @@
 
 
 
-                            <li class="nav-item {{ request()->is('Phone-repair*') ? 'active' : null }}">
-                                <a class="nav-link" href="{{ route('phone-repair.index') }}">
+                            <li class="nav-item {{ request()->is('Phone-repairs*') ? 'active' : null }}">
+                                <a class="nav-link" href="{{ route('phone-repairs.index') }}">
                                     <span
                                         class="nav-link-icon d-md-none d-lg-inline-block"><!-- Download SVG icon from http://tabler-icons.io/i/home -->
                                         <svg xmlns="http://www.w3.org/2000/svg"

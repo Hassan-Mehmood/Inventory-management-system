@@ -67,6 +67,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 	Route::resource('/categories', CategoryController::class);
 	Route::resource('/subcategories', SubCategoryController::class);
 	Route::resource('/units', UnitController::class);
+	Route::resource('/phone-repairs', PhoneRepairController::class);
 
 	// Route Products
 	Route::get('products/import/', [ProductImportController::class, 'create'])->name('products.import.view');
@@ -84,19 +85,19 @@ Route::middleware(['auth', 'verified'])->group(function () {
 	Route::post('invoice/create/', [InvoiceController::class, 'create'])->name('invoice.create');
 
 	// Route Expenses Category
-	Route::get('/expenses-category', [ExpenseCategoryController::class, 'index'])->name('expensescategory.index');   
+	Route::get('/expenses-category', [ExpenseCategoryController::class, 'index'])->name('expensescategory.index');
 	Route::get('/expenses-category/create', [ExpenseCategoryController::class, 'create'])->name('expensescategory.create');
 	Route::post('/expenses-category/store', [ExpenseCategoryController::class, 'store'])->name('expensescategory.store');
-	Route::get('/expenses-category/view/{ExpenseCategory}', [ExpenseCategoryController::class, 'show'])->name('expensescategory.show'); 
+	Route::get('/expenses-category/view/{ExpenseCategory}', [ExpenseCategoryController::class, 'show'])->name('expensescategory.show');
 	Route::get('/expenses-category/edit/{ExpenseCategory}', [ExpenseCategoryController::class, 'edit'])->name('expensescategory.edit');
 	Route::put('/expenses-category/update/{ExpenseCategory}', [ExpenseCategoryController::class, 'update'])->name('expensescategory.update');
 	Route::delete('/expenses-category/delete/{ExpenseCategory}', [ExpenseCategoryController::class, 'destroy'])->name('expensescategory.destroy');
 
 	// Route Expenses
-	Route::get('/expenses', [ExpenseController::class, 'index'])->name('expenses.index');   
+	Route::get('/expenses', [ExpenseController::class, 'index'])->name('expenses.index');
 	Route::get('/expenses/create', [ExpenseController::class, 'create'])->name('expenses.create');
-	Route::post('/expenses/store', [ExpenseController::class, 'store'])->name('expenses.store'); 
-	Route::get('/expenses/view/{Expense}', [ExpenseController::class, 'show'])->name('expenses.show'); 
+	Route::post('/expenses/store', [ExpenseController::class, 'store'])->name('expenses.store');
+	Route::get('/expenses/view/{Expense}', [ExpenseController::class, 'show'])->name('expenses.show');
 	Route::get('/expenses/edit/{Expense}', [ExpenseController::class, 'edit'])->name('expenses.edit');
 	Route::put('/expenses/update/{Expense}', [ExpenseController::class, 'update'])->name('expenses.update');
 	Route::delete('/expenses/delete/{Expense}', [ExpenseController::class, 'destroy'])->name('expenses.destroy');
@@ -143,11 +144,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
 	Route::delete('/purchases/delete/{purchase}', [PurchaseController::class, 'destroy'])->name('purchases.delete');
 
 
-	// Phone repair
-	Route::get('/phone-repair', [PhoneRepairController::class, 'index'])->name('phone-repair.index');
-	Route::get('/phone-repair/create', [PhoneRepairController::class, 'create'])->name('phone-repair.create');
-	Route::get('/phone-repair/edit/{id}', [PhoneRepairController::class, 'edit'])->name('phone-repair.edit');
-	Route::get('/phone-repair/{id}', [PhoneRepairController::class, 'show'])->name('phone-repair.show');
 
 	// Route Quotations
 	// Route::get('/quotations/{quotation}/edit', [QuotationController::class, 'edit'])->name('quotations.edit');

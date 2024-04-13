@@ -10,12 +10,12 @@ class PhoneRepairController extends Controller
 {
 	public function index()
 	{
-		return view("phone-repair.index");
+		return view("phone-repairs.index");
 	}
 
 	public function create()
 	{
-		return view('phone-repair.create');
+		return view('phone-repairs.create');
 	}
 
 	public function show($id)
@@ -27,12 +27,12 @@ class PhoneRepairController extends Controller
 			$status = 'Pending';
 		}
 
-		return view('phone-repair.show', ['status' => $status]);
+		return view('phone-repairs.show', ['status' => $status]);
 	}
 
 	public function edit($id)
 	{
-		return view('phone-repair.edit');
+		return view('phone-repairs.edit');
 	}
 
 }

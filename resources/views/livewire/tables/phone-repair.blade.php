@@ -1,18 +1,41 @@
-<?php
-function checkStatus($id)
-{
-    if ($id % 2 == 0) {
-        $status = 'completed';
-    } else {
-        $status = 'pending';
-    }
+<div class="card">
+    <div class="card-header">
+        <div>
+            <h3 class="card-title">
+                {{ __('Phone repairs') }}
+            </h3>
+        </div>
 
-    return $status;
-}
+        <div class="card-actions">
+            <x-action.create route="{{ route('phone-repairs.create') }}" />
+        </div>
+    </div>
 
-?>
+    <div class="card-body border-bottom py-3">
+        <div class="d-flex">
+            <div class="text-secondary">
+                Show
+                <div class="mx-2 d-inline-block">
+                    <select wire:model.live="perPage" class="form-select form-select-sm" aria-label="result per page">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="25">25</option>
+                    </select>
+                </div>
+                entries
+            </div>
+            <div class="ms-auto text-secondary">
+                Search:
+                <div class="ms-2 d-inline-block">
+                    <input type="text" wire:model.live="search" class="form-control form-control-sm"
+                        aria-label="Search invoice">
+                </div>
+            </div>
+        </div>
+    </div>
 
-<div>
+    <x-spinner.loading-spinner />
 
     <div class="table-responsive">
         <table wire:loading.remove class="table table-bordered card-table table-vcenter text-nowrap datatable">
@@ -72,16 +95,15 @@ function checkStatus($id)
                             Dummy data
                         </td>
                         <td class="align-middle text-center">
-                            <x-status {{-- color="{{ $order->order_status === \App\Enums\OrderStatus::COMPLETE ? 'green' : ($order->order_status === \App\Enums\OrderStatus::PENDING ? 'orange' : '') }}" --}}
-                                color="{{ checkStatus($i) === 'completed' ? 'green' : 'orange' }}"
-                                class="text-uppercase">
+                            <x-status {{-- color="{{ $order->order_status === \App\Enums\OrderStatus::COMPLETE ? 'green' : ($order->order_status === \App\Enums\OrderStatus::PENDING ? 'orange' : '') }}" --}} {{-- color="{{ checkStatus($i) === 'completed' ? 'green' : 'orange' }}" --}} color='orange' class="text-uppercase">
                                 {{-- {{ $order->order_status->label() }} --}}
-                                {{ checkStatus($i) === 'completed' ? 'Completed' : 'Pending' }}
+                                {{-- {{ checkStatus($i) === 'completed' ? 'Completed' : 'Pending' }} --}}
+                                pending
                             </x-status>
                         </td>
                         <td class="align-middle text-center">
-                            <x-button.show class="btn-icon" route="{{ route('phone-repair.show', $i) }}" />
-                            <x-button.edit class="btn-icon" route="{{ route('phone-repair.edit', $i) }}" />
+                            <x-button.show class="btn-icon" route="{{ route('phone-repairs.show', $i) }}" />
+                            <x-button.edit class="btn-icon" route="{{ route('phone-repairs.edit', $i) }}" />
                             @if (true)
                                 <x-button.delete class="btn-icon" route="{{ route('orders.cancel', 1) }}"
                                     onclick="return confirm('Are you sure to cancel invoice no. 1 ?')" />
