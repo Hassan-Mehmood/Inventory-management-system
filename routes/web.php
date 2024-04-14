@@ -18,6 +18,7 @@ use App\Http\Controllers\Product\ProductImportController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Purchase\PurchaseController;
 use App\Http\Controllers\Quotation\QuotationController;
+use App\Http\Controllers\repairParts\RepairPartsController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\UnitController;
@@ -68,6 +69,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 	Route::resource('/subcategories', SubCategoryController::class);
 	Route::resource('/units', UnitController::class);
 	Route::resource('/phone-repairs', PhoneRepairController::class);
+	Route::resource('/repair-parts', RepairPartsController::class);
 
 	// Route Products
 	Route::get('products/import/', [ProductImportController::class, 'create'])->name('products.import.view');
