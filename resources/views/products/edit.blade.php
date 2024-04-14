@@ -80,7 +80,7 @@
                                             </div>
                                         </div>
 
-                                        @livewire('tables.subcategory-select-component', ['categories' => $categories, 'product' => $product])
+                                        @livewire('tables.subcategory-select-component', ['product' => $product])
 
 
                                         <div class="col-md-12 mb-3">

@@ -2,10 +2,10 @@
 
 @php
     switch ($status) {
-        case 'Pending':
+        case 'pending':
             $progress = 50;
             break;
-        case 'Completed':
+        case 'completed':
             $progress = 100;
             break;
         default:

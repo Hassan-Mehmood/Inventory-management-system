@@ -45,27 +45,27 @@
                         {{ __('No.') }}
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('invoice_no')" href="#" role="button">
+                        <a wire:click.prevent="sortBy('phone_name')" href="#" role="button">
                             {{ __('Phone Name') }}
-                            {{-- @include('inclues._sort-icon', ['field' => 'invoice_no']) --}}
+                            @include('inclues._sort-icon', ['field' => 'phone_name'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('customer_id')" href="#" role="button">
+                        <a wire:click.prevent="sortBy('repair_parts')" href="#" role="button">
                             {{ __('Repair parts') }}
-                            {{-- @include('inclues._sort-icon', ['field' => 'customer_id']) --}}
+                            @include('inclues._sort-icon', ['field' => 'repair_parts'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('order_date')" href="#" role="button">
+                        <a wire:click.prevent="sortBy('description')" href="#" role="button">
                             {{ __('Description') }}
-                            {{-- @include('inclues._sort-icon', ['field' => 'order_date']) --}}
+                            @include('inclues._sort-icon', ['field' => 'description'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('payment_type')" href="#" role="button">
+                        <a wire:click.prevent="sortBy('status')" href="#" role="button">
                             {{ __('Status') }}
-                            {{-- @include('inclues._sort-icon', ['field' => 'payment_type']) --}}
+                            @include('inclues._sort-icon', ['field' => 'status'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
@@ -74,52 +74,55 @@
                 </tr>
             </thead>
             <tbody>
-                {{-- @forelse () --}}
-                @for ($i = 0; $i < 10; $i++)
+                @forelse ($phone_repairs as $repair)
                     <tr>
                         <td class="align-middle text-center">
-                            <?php $temp_i = $i; ?>
-                            {{ ++$temp_i }}
+                            {{ $loop->iteration }}
                         </td>
                         <td class="align-middle text-center">
-                            {{-- {{ $order->invoice_no }} --}}
-                            Dummy data
+                            {{ $repair->phone_name }}
                         </td>
                         <td class="align-middle text-center">
-                            {{-- {{ $order->customer->name }} --}}
-                            Dummy data
-
+                            {{ $repair->repair_part_name }}
                         </td>
                         <td class="align-middle text-center">
-                            {{-- {{ $order->order_date->format('d-m-Y') }} --}}
-                            Dummy data
+                            {{ $repair->description }}
                         </td>
                         <td class="align-middle text-center">
-                            <x-status {{-- color="{{ $order->order_status === \App\Enums\OrderStatus::COMPLETE ? 'green' : ($order->order_status === \App\Enums\OrderStatus::PENDING ? 'orange' : '') }}" --}} {{-- color="{{ checkStatus($i) === 'completed' ? 'green' : 'orange' }}" --}} color='orange' class="text-uppercase">
-                                {{-- {{ $order->order_status->label() }} --}}
-                                {{-- {{ checkStatus($i) === 'completed' ? 'Completed' : 'Pending' }} --}}
-                                pending
+                            <x-status
+                                color="{{ $repair->status === 'completed' ? 'green' : ($repair->status === 'pending' ? 'orange' : '') }}"
+                                class="text-uppercase">
+                                {{ $repair->status }}
                             </x-status>
                         </td>
                         <td class="align-middle text-center">
-                            <x-button.show class="btn-icon" route="{{ route('phone-repairs.show', $i) }}" />
-                            <x-button.edit class="btn-icon" route="{{ route('phone-repairs.edit', $i) }}" />
-                            @if (true)
-                                <x-button.delete class="btn-icon" route="{{ route('orders.cancel', 1) }}"
-                                    onclick="return confirm('Are you sure to cancel invoice no. 1 ?')" />
-                            @endif
+                            <x-button.show class="btn-icon" route="{{ route('phone-repairs.show', $repair->id) }}" />
+                            <x-button.edit class="btn-icon" route="{{ route('phone-repairs.edit', $repair->id) }}" />
+                            <x-button.delete class="btn-icon" route="{{ route('phone-repairs.destroy', $repair->id) }}"
+                                onclick="return confirm('Are you sure to delete?')" />
                         </td>
                     </tr>
-                @endfor
-                {{-- @empty
+
+                @empty
                     <tr>
                         <td class="align-middle text-center" colspan="8">
                             No results found
                         </td>
                     </tr>
-                @endforelse --}}
+                @endforelse
             </tbody>
         </table>
+    </div>
+
+    <div class="card-footer d-flex align-items-center">
+        <p class="m-0 text-secondary">
+            Showing <span>{{ $phone_repairs->firstItem() }}</span>
+            to <span>{{ $phone_repairs->lastItem() }}</span> of <span>{{ $phone_repairs->total() }}</span> entries
+        </p>
+
+        <ul class="pagination m-0 ms-auto">
+            {{ $phone_repairs->links() }}
+        </ul>
     </div>
 
 </div>

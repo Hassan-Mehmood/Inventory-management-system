@@ -2,7 +2,7 @@
     <table class="table table-bordered" id="products_table">
         <thead class="thead-dark">
             <tr>
-                <th class="align-middle">Phone name</th>
+                <th class="align-middle">Product name</th>
                 <th class="align-middle text-center">Quantity</th>
                 <th class="align-middle text-center">Cost</th>
                 <th class="align-middle text-center">Total</th>

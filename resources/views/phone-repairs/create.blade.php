@@ -1,13 +1,13 @@
 @extends('layouts.tabler')
 
-<?php
-$repair_parts = [
+
+{{-- $repair_parts = [
     'Battery' => 'Battery',
     'Back Cover' => 'Back Cover',
     'Screen' => 'Screen',
     'Camera' => 'Camera',
     'Others' => 'Others',
-]; ?>
+];  --}}
 
 @section('content')
     <div class="page-body">
@@ -15,11 +15,11 @@ $repair_parts = [
             <x-alert />
 
             <div class="row row-cards">
-                <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('phone-repairs.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <div class="row">
-                        <div class="col-lg-4">
+                        {{-- <div class="col-lg-4">
                             <div class="card">
                                 <div class="card-body">
                                     <h3 class="card-title">
@@ -45,9 +45,9 @@ $repair_parts = [
                                     @enderror
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
-                        <div class="col-lg-8">
+                        <div class="col-lg-8 mx-auto">
                             <div class="card">
                                 <div class="card-header">
                                     <div>
@@ -57,7 +57,7 @@ $repair_parts = [
                                     </div>
 
                                     <div class="card-actions">
-                                        <a href="{{ route('phone-repair.index') }}" class="btn-action">
+                                        <a href="{{ route('phone-repairs.index') }}" class="btn-action">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24"
                                                 height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
                                                 fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -71,26 +71,27 @@ $repair_parts = [
                                 <div class="card-body">
                                     <div class="row row-cards">
                                         <div class="col-md-12">
-                                            <x-input name="Phone name" id="name" placeholder="Phone name"
-                                                value="{{ old('name') }}" />
+                                            <x-input name="phone_name" id="phone_name" placeholder="Phone name"
+                                                label='Phone name' value="{{ old('phone_name') }}" />
                                         </div>
 
                                         <div class="col-sm-6 col-md-12">
-                                            <label for="select_repair_part" class="form-label required">
+                                            <label for="repair_part_id" class="form-label required">
                                                 {{ __('Repair part') }}
                                             </label>
 
-                                            <select name="repair_part" id="select_repair_part"
+                                            <select name="repair_part_id" id="repair_part_id"
                                                 class="form-control form-select">
-                                                @foreach ($repair_parts as $key => $value)
-                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                                @foreach ($repairParts as $part)
+                                                    <option value="{{ $part->id }}">{{ $part->name }}</option>
                                                 @endforeach
+                                                {{-- <option value="others">Others</option> --}}
                                             </select>
                                         </div>
 
                                         <div class="col-sm-6 col-md-12 d-none" id="desc_field">
-                                            <x-input name="Write a description" id="desc_name"
-                                                placeholder="Write a description" value="{{ old('desc_name') }}" />
+                                            <x-input name="description" lable='Write a description' id="description"
+                                                placeholder="Write a description" value="{{ old('description') }}" />
                                         </div>
                                     </div>
                                 </div>
@@ -116,10 +117,16 @@ $repair_parts = [
 @pushonce('page-scripts')
     <script src="{{ asset('assets/js/img-preview.js') }}"></script>
     <script>
-        const select_repair_part = document.querySelector('#select_repair_part');
+        const select_repair_part = document.querySelector('#repair_part_id');
+
+        window.onload = function() {
+            if (select_repair_part.value === 'others') {
+                document.querySelector('#desc_field').classList.remove('d-none');
+            }
+        }
 
         select_repair_part.addEventListener('change', function() {
-            if (select_repair_part.value === 'Others') {
+            if (select_repair_part.value === 'others') {
                 document.querySelector('#desc_field').classList.remove('d-none');
             } else {
                 document.querySelector('#desc_field').classList.add('d-none');

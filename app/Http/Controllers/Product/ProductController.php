@@ -7,11 +7,7 @@ use App\Http\Requests\Product\StoreProductRequest;
 use App\Http\Requests\Product\UpdateProductRequest;
 use App\Models\Category;
 use App\Models\Product;
-use App\Models\SubCategory;
-use App\Models\Unit;
-use Haruncpi\LaravelIdGenerator\IdGenerator;
 use Illuminate\Http\Request;
-use Picqer\Barcode\BarcodeGeneratorHTML;
 use Str;
 
 class ProductController extends Controller
@@ -28,6 +24,7 @@ class ProductController extends Controller
 	public function create(Request $request)
 	{
 		$categories = Category::where("user_id", auth()->id())->get(['id', 'name']);
+		$product = Product::where('uuid', auth()->id())->first();
 
 		// $sub_categories = SubCategory::where("category_id", $categories[0]['id'])->get(['id', 'sub_category_name']);
 
@@ -37,6 +34,7 @@ class ProductController extends Controller
 
 		return view('products.create', [
 			'categories' => $categories,
+			'product' => $product
 			// 'sub_categories' => $sub_categories,
 		]);
 	}
@@ -70,9 +68,10 @@ class ProductController extends Controller
 			'cost_price' => $request->cost_price,
 			'sale_price' => $request->sale_price,
 			'minimum_price' => $request->minimum_price,
+			'on_hand_quantity' => $request->on_hand_quantity,
 			'quantity' => $request->on_hand_quantity,
 			'stock_warning' => $request->stock_warning,
-			'reorder_level' => $request->reorder_level,
+			're_order_level' => $request->reorder_level,
 			'manage_serialized' => $request->manage_serialized,
 			'condition' => $request->condition,
 			'supplier' => $request->supplier,
@@ -154,6 +153,7 @@ class ProductController extends Controller
 		$product->sale_price = $request->sale_price;
 		$product->minimum_price = $request->minimum_price;
 		$product->on_hand_quantity = $request->on_hand_quantity;
+		$product->quantity = $request->on_hand_quantity;
 		$product->stock_warning = $request->stock_warning;
 		$product->re_order_level = $request->reorder_level;
 		$product->manage_serialized = $request->manage_serialized;

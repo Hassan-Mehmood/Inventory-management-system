@@ -67,184 +67,204 @@
                         {{ __('Image') }}
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('name')" href="#" role="button">
+                        <a wire:click.prevent="sortBy('products.name')" href="#" role="button">
                             {{ __('Name') }}
-                            @include('inclues._sort-icon', ['field' => 'name'])
+                            @include('inclues._sort-icon', ['field' => 'products.name'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('description')" href="#" role="button">
+                        <a wire:click.prevent="sortBy('products.product_description')" href="#" role="button">
                             {{ __('Description') }}
-                            @include('inclues._sort-icon', ['field' => 'description'])
+                            @include('inclues._sort-icon', ['field' => 'products.product_description'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('manufacturer')" href="#" role="button">
+                        <a wire:click.prevent="sortBy('products.manufacturer')" href="#" role="button">
                             {{ __('Manufacturer') }}
-                            @include('inclues._sort-icon', ['field' => 'manufacturer'])
+                            @include('inclues._sort-icon', ['field' => 'products.manufacturer'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('device')" href="#" role="button">
+                        <a wire:click.prevent="sortBy('products.device')" href="#" role="button">
                             {{ __('Device') }}
-                            @include('inclues._sort-icon', ['field' => 'device'])
+                            @include('inclues._sort-icon', ['field' => 'products.device'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('sku')" href="#" role="button">
+                        <a wire:click.prevent="sortBy('categories.name')" href="#" role="button">
+                            {{ __('Category') }}
+                            @include('inclues._sort-icon', ['field' => 'categories.name'])
+                        </a>
+                    </th>
+                    <th scope="col" class="align-middle text-center">
+                        <a wire:click.prevent="sortBy('sub_categories.sub_category_name')" href="#"
+                            role="button">
+                            {{ __('Sub Category') }}
+                            @include('inclues._sort-icon', ['field' => 'sub_category_name'])
+                        </a>
+                    </th>
+                    <th scope="col" class="align-middle text-center">
+                        <a wire:click.prevent="sortBy('products.sku')" href="#" role="button">
                             {{ __('SKU') }}
-                            @include('inclues._sort-icon', ['field' => 'sku'])
+                            @include('inclues._sort-icon', ['field' => 'products.sku'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('upc_code')" href="#" role="button">
+                        <a wire:click.prevent="sortBy('products.upc_code')" href="#" role="button">
                             {{ __('UPC Code') }}
-                            @include('inclues._sort-icon', ['field' => 'upc_code'])
+                            @include('inclues._sort-icon', ['field' => 'products.upc_code'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('is_barcode')" href="#" role="button">
+                        <a wire:click.prevent="sortBy('products.is_barcode')" href="#" role="button">
                             {{ __('Is barcode') }}
-                            @include('inclues._sort-icon', ['field' => 'is_barcode'])
+                            @include('inclues._sort-icon', ['field' => 'products.is_barcode'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('valuation_method')" href="#" role="button">
+                        <a wire:click.prevent="sortBy('products.valuation_method')" href="#" role="button">
                             {{ __('Valuation method') }}
-                            @include('inclues._sort-icon', ['field' => 'valuation_method'])
+                            @include('inclues._sort-icon', ['field' => 'products.valuation_method'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('new_stock_adjustment')" href="#" role="button">
+                        <a wire:click.prevent="sortBy('products.new_stock_adjustment')" href="#" role="button">
                             {{ __('New stock adjustment') }}
-                            @include('inclues._sort-icon', ['field' => 'new_stock_adjustment'])
+                            @include('inclues._sort-icon', ['field' => 'products.new_stock_adjustment'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('new_inventory_item_cost')" href="#" role="button">
+                        <a wire:click.prevent="sortBy('products.new_inventory_item_cost')" href="#"
+                            role="button">
                             {{ __('New inventory item cost') }}
-                            @include('inclues._sort-icon', ['field' => 'new_inventory_item_cost'])
+                            @include('inclues._sort-icon', [
+                                'field' => 'products.new_inventory_item_cost',
+                            ])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('tax_class')" href="#" role="button">
+                        <a wire:click.prevent="sortBy('products.tax_class')" href="#" role="button">
                             {{ __('Tax inclusive') }}
-                            @include('inclues._sort-icon', ['field' => 'tax_class'])
+                            @include('inclues._sort-icon', ['field' => 'products.tax_class'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('tax_inclusive')" href="#" role="button">
+                        <a wire:click.prevent="sortBy('products.tax_inclusive')" href="#" role="button">
                             {{ __('Tax inclusive') }}
-                            @include('inclues._sort-icon', ['field' => 'tax_inclusive'])
+                            @include('inclues._sort-icon', ['field' => 'products.tax_inclusive'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('retail_price')" href="#" role="button">
+                        <a wire:click.prevent="sortBy('products.retail_price')" href="#" role="button">
                             {{ __('Retail price') }}
-                            @include('inclues._sort-icon', ['field' => 'retail_price'])
+                            @include('inclues._sort-icon', ['field' => 'products.retail_price'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('cost_price')" href="#" role="button">
+                        <a wire:click.prevent="sortBy('products.cost_price')" href="#" role="button">
                             {{ __('Cost price') }}
-                            @include('inclues._sort-icon', ['field' => 'cost_price'])
+                            @include('inclues._sort-icon', ['field' => 'products.cost_price'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('sale_price')" href="#" role="button">
+                        <a wire:click.prevent="sortBy('products.sale_price')" href="#" role="button">
                             {{ __('Sale price') }}
-                            @include('inclues._sort-icon', ['field' => 'sale_price'])
+                            @include('inclues._sort-icon', ['field' => 'products.sale_price'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('minimum_price')" href="#" role="button">
+                        <a wire:click.prevent="sortBy('products.minimum_price')" href="#" role="button">
                             {{ __('Minimum price') }}
-                            @include('inclues._sort-icon', ['field' => 'minimum_price'])
+                            @include('inclues._sort-icon', ['field' => 'products.minimum_price'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('on_hand_quantity')" href="#" role="button">
+                        <a wire:click.prevent="sortBy('products.on_hand_quantity')" href="#" role="button">
                             {{ __('On hand quantity') }}
-                            @include('inclues._sort-icon', ['field' => 'on_hand_quantity'])
+                            @include('inclues._sort-icon', ['field' => 'products.on_hand_quantity'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('stock_warning')" href="#" role="button">
+                        <a wire:click.prevent="sortBy('products.stock_warning')" href="#" role="button">
                             {{ __('Stock warning') }}
-                            @include('inclues._sort-icon', ['field' => 'stock_warning'])
+                            @include('inclues._sort-icon', ['field' => 'products.stock_warning'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('re_order_level')" href="#" role="button">
+                        <a wire:click.prevent="sortBy('products.re_order_level')" href="#" role="button">
                             {{ __('Re order level') }}
-                            @include('inclues._sort-icon', ['field' => 're_order_level'])
+                            @include('inclues._sort-icon', ['field' => 'products.re_order_level'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('manage_serialized')" href="#" role="button">
+                        <a wire:click.prevent="sortBy('products.manage_serialized')" href="#" role="button">
                             {{ __('Manage serialized') }}
-                            @include('inclues._sort-icon', ['field' => 'manage_serialized'])
+                            @include('inclues._sort-icon', ['field' => 'products.manage_serialized'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('condition')" href="#" role="button">
+                        <a wire:click.prevent="sortBy('products.condition')" href="#" role="button">
                             {{ __('Condition') }}
-                            @include('inclues._sort-icon', ['field' => 'condition'])
+                            @include('inclues._sort-icon', ['field' => 'products.condition'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('supplier')" href="#" role="button">
+                        <a wire:click.prevent="sortBy('products.supplier')" href="#" role="button">
                             {{ __('Supplier') }}
-                            @include('inclues._sort-icon', ['field' => 'supplier'])
+                            @include('inclues._sort-icon', ['field' => 'products.supplier'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('physical_location')" href="#" role="button">
+                        <a wire:click.prevent="sortBy('products.physical_location')" href="#" role="button">
                             {{ __('Physical location') }}
-                            @include('inclues._sort-icon', ['field' => 'physical_location'])
+                            @include('inclues._sort-icon', ['field' => 'products.physical_location'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('warranty')" href="#" role="button">
+                        <a wire:click.prevent="sortBy('products.warranty')" href="#" role="button">
                             {{ __('Warranty') }}
-                            @include('inclues._sort-icon', ['field' => 'warranty'])
+                            @include('inclues._sort-icon', ['field' => 'products.warranty'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('warranty_time_frame')" href="#" role="button">
+                        <a wire:click.prevent="sortBy('products.warranty_time_frame')" href="#" role="button">
                             {{ __('Warranty time frame') }}
-                            @include('inclues._sort-icon', ['field' => 'warranty_time_frame'])
+                            @include('inclues._sort-icon', ['field' => 'products.warranty_time_frame'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('imei')" href="#" role="button">
+                        <a wire:click.prevent="sortBy('products.imei')" href="#" role="button">
                             {{ __('IMEI') }}
-                            @include('inclues._sort-icon', ['field' => 'imei'])
+                            @include('inclues._sort-icon', ['field' => 'products.imei'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('display_on_point_of_sale')" href="#" role="button">
+                        <a wire:click.prevent="sortBy('products.display_on_point_of_sale')" href="#"
+                            role="button">
                             {{ __('Display on point of sale') }}
-                            @include('inclues._sort-icon', ['field' => 'display_on_point_of_sale'])
+                            @include('inclues._sort-icon', [
+                                'field' => 'products.display_on_point_of_sale',
+                            ])
                         </a>
                     </th>
 
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('display_on_widget')" href="#" role="button">
+                        <a wire:click.prevent="sortBy('products.display_on_widget')" href="#" role="button">
                             {{ __('Display on widget') }}
-                            @include('inclues._sort-icon', ['field' => 'display_on_widget'])
+                            @include('inclues._sort-icon', ['field' => 'products.display_on_widget'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('comission_percentage')" href="#" role="button">
+                        <a wire:click.prevent="sortBy('products.comission_percentage')" href="#"
+                            role="button">
                             {{ __('Comission percentage') }}
-                            @include('inclues._sort-icon', ['field' => 'comission_percentage'])
+                            @include('inclues._sort-icon', ['field' => 'products.comission_percentage'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('comission_amount')" href="#" role="button">
+                        <a wire:click.prevent="sortBy('products.comission_amount')" href="#" role="button">
                             {{ __('Comission amoutn') }}
-                            @include('inclues._sort-icon', ['field' => 'comission_amount'])
+                            @include('inclues._sort-icon', ['field' => 'products.comission_amount'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
@@ -264,7 +284,7 @@
                                 alt="">
                         </td>
                         <td class="align-middle text-center">
-                            {{ $product->name }}
+                            {{ $product->product_name }}
                         </td>
                         <td class="align-middle text-center">
                             {{ $product->product_description }}
@@ -274,6 +294,12 @@
                         </td>
                         <td class="align-middle text-center">
                             {{ $product->device }}
+                        </td>
+                        <td class="align-middle text-center">
+                            {{ $product->category_name }}
+                        </td>
+                        <td class="align-middle text-center">
+                            {{ $product->sub_category_name }}
                         </td>
                         <td class="align-middle text-center">
                             {{ $product->sku }}

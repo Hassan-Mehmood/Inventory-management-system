@@ -72,31 +72,10 @@ class Product extends Model
 		return $this->belongsTo(Category::class);
 	}
 
-	public function unit(): BelongsTo
-	{
-		return $this->belongsTo(Unit::class);
-	}
-
-	protected function buyingPrice(): Attribute
-	{
-		return Attribute::make(
-			get: fn($value) => $value / 100,
-			set: fn($value) => $value * 100,
-		);
-	}
-
-	protected function sellingPrice(): Attribute
-	{
-		return Attribute::make(
-			get: fn($value) => $value / 100,
-			set: fn($value) => $value * 100,
-		);
-	}
-
 	public function scopeSearch($query, $value): void
 	{
-		$query->where('name', 'like', "%{$value}%")
-			->orWhere('category_id', 'like', "%{$value}%");
+		$query->where('products.name', 'like', "%{$value}%")
+			->orWhere('products.category_id', 'like', "%{$value}%");
 	}
 	/**
 	 * Get the user that owns the Category

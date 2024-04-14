@@ -2,12 +2,12 @@
     <div class="card-header">
         <div>
             <h3 class="card-title">
-                {{ __('Sub Categories') }}
+                {{ __('Repair Parts') }}
             </h3>
         </div>
 
         <div class="card-actions">
-            <x-action.create route="{{ route('subcategories.create') }}" />
+            <x-action.create route="{{ route('repair-parts.create') }}" />
         </div>
     </div>
 
@@ -45,9 +45,9 @@
                         {{ __('ID') }}
                     </th>
                     <th scope="col" class="align-middle text-center">
-                        <a wire:click.prevent="sortBy('sub_category_name')" href="#" role="button">
-                            {{ __('Sub category name') }}
-                            @include('inclues._sort-icon', ['field' => 'sub_category_name'])
+                        <a wire:click.prevent="sortBy('name')" href="#" role="button">
+                            {{ __('Repair part name') }}
+                            @include('inclues._sort-icon', ['field' => 'name'])
                         </a>
                     </th>
                     <th scope="col" class="align-middle text-center">
@@ -56,18 +56,18 @@
                 </tr>
             </thead>
             <tbody>
-                @forelse ($subcategories as $category)
+                @forelse ($repairParts as $part)
                     <tr>
                         <td class="align-middle text-center" style="width: 10%">
                             {{ ++$loop->index }}
                         </td>
                         <td class="align-middle text-center">
-                            {{ $category->sub_category_name }}
+                            {{ $part->name }}
                         </td>
                         <td class="align-middle text-center">
-                            <x-button.edit class="btn-icon" route="{{ route('subcategories.edit', $category) }}" />
-                            <x-button.delete class="btn-icon" route="{{ route('subcategories.destroy', $category) }}"
-                                onclick="return confirm('Are you sure to remove sub category {{ $category->sub_category_name }} ?!')" />
+                            <x-button.edit class="btn-icon" route="{{ route('repair-parts.edit', $part) }}" />
+                            <x-button.delete class="btn-icon" route="{{ route('repair-parts.destroy', $part) }}"
+                                onclick="return confirm('Are you sure to remove repair part {{ $part->name }} ?!')" />
                         </td>
                     </tr>
                 @empty
@@ -83,12 +83,12 @@
 
     <div class="card-footer d-flex align-items-center">
         <p class="m-0 text-secondary">
-            Showing <span>{{ $subcategories->firstItem() }}</span> to <span>{{ $subcategories->lastItem() }}</span> of
-            <span>{{ $subcategories->total() }}</span> entries
+            Showing <span>{{ $repairParts->firstItem() }}</span> to <span>{{ $repairParts->lastItem() }}</span> of
+            <span>{{ $repairParts->total() }}</span> entries
         </p>
 
         <ul class="pagination m-0 ms-auto">
-            {{ $subcategories->links() }}
+            {{ $repairParts->links() }}
         </ul>
     </div>
 </div>

@@ -1,29 +1,12 @@
 @extends('layouts.tabler')
 
-<?php
-$repair_parts = [
-    'Battery' => 'Battery',
-    'Back Cover' => 'Back Cover',
-    'Screen' => 'Screen',
-    'Camera' => 'Camera',
-    'Others' => 'Others',
-];
-
-$status = [
-    'Pending' => 'Pending',
-    'In Progress' => 'In Progress',
-    'Completed' => 'Completed',
-];
-
-?>
-
 @section('content')
     <div class="page-header d-print-none">
         <div class="container-xl">
             <div class="row g-2 align-items-center mb-3">
                 <div class="col">
                     <h2 class="page-title">
-                        {{ __('Edit Product') }}
+                        {{ __('Edit phone repair') }}
                     </h2>
                 </div>
             </div>
@@ -36,20 +19,22 @@ $status = [
         <div class="container-xl">
             <div class="row row-cards">
 
-                <form action="{{ route('products.update', 1) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('phone-repairs.update', $phoneRepair->id) }}" method="POST"
+                    enctype="multipart/form-data">
                     @csrf
                     @method('put')
 
                     <div class="row">
-                        <div class="col-lg-4">
+                        {{-- <div class="col-lg-4">
                             <div class="card">
                                 <div class="card-body">
                                     <h3 class="card-title">
                                         {{ __('Product Image') }}
                                     </h3>
 
-                                    <img class="img-account-profile mb-2" {{-- src="{{ $product->product_image ? asset('storage/' . $product->product_image) : asset('assets/img/products/default.webp') }}" --}} alt=""
-                                        id="image-preview">
+                                    <img class="img-account-profile mb-2"
+                                        src="{{ $product->product_image ? asset('storage/' . $product->product_image) : asset('assets/img/products/default.webp') }}"
+                                        alt="" id="image-preview">
 
                                     <div class="small font-italic text-muted mb-2">
                                         JPG or PNG no larger than 2 MB
@@ -61,15 +46,14 @@ $status = [
 
                                     @error('product_image')
                                         <div class="invalid-feedback">
-                                            {{-- {{ $message }} --}}
+                                            {{ $message }}
                                         </div>
                                     @enderror
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
 
-                        <div class="col-lg-8">
-
+                        <div class="col-lg-12 mx-auto">
                             <div class="card">
                                 <div class="card-body">
                                     <h3 class="card-title">
@@ -86,11 +70,12 @@ $status = [
 
                                                 <input type="text" id="phone_name" name="phone_name"
                                                     class="form-control @error('phone_name') is-invalid @enderror"
-                                                    placeholder="Phone name" value="{{ old('phone_name') }}">
+                                                    placeholder="Phone name"
+                                                    value="{{ old('phone_name', $phoneRepair->phone_name) }}">
 
                                                 @error('phone_name')
                                                     <div class="invalid-feedback">
-                                                        {{-- {{ $message }} --}}
+                                                        {{ $message }}
                                                     </div>
                                                 @enderror
                                             </div>
@@ -105,10 +90,11 @@ $status = [
 
                                                 <select name="repair_part_id" id="repair_part_id"
                                                     class="form-select @error('repair_part_id') is-invalid @enderror">
-                                                    <option selected="" disabled="">Repair part</option>
-                                                    @foreach ($repair_parts as $part)
-                                                        <option value="{{ $part }}">
-                                                            {{ $part }}</option>
+                                                    @foreach ($repairParts as $part)
+                                                        <option value="{{ $part->id }}"
+                                                            @if (old('repair_part_id', $phoneRepair->repair_part_id) === $part->id) selected @endif>
+                                                            {{ $part->name }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
 
@@ -146,12 +132,14 @@ $status = [
 
                                                 <select name="status" id="status"
                                                     class="form-select @error('status') is-invalid @enderror">
-                                                    <option selected="" disabled="">Status</option>
-                                                    @foreach ($status as $st)
-                                                        <option value="{{ $st }}"
-                                                            @if (old('status', $st) == $st) selected="selected" @endif>
-                                                            {{ $st }}</option>
-                                                    @endforeach
+                                                    <option value="pending"
+                                                        @if (old('status', 'pending') == $phoneRepair->status) selected @endif>
+                                                        Pending
+                                                    </option>
+                                                    <option value="completed"
+                                                        @if (old('status', 'completed') == $phoneRepair->status) selected @endif>
+                                                        Completed
+                                                    </option>
                                                 </select>
 
                                                 @error('status')

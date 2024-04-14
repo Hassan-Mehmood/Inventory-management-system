@@ -2,9 +2,9 @@
 
 @section('content')
     <div class="page-body">
-        @if (false)
+        @if (!$repairs)
             <x-empty title="No phones found" message="Try adjusting your search or filter to find what you're looking for."
-                button_label="{{ __('Add your phone repair') }}" button_route="{{ route('phone-repair.create') }}" />
+                button_label="{{ __('Add your phone repair') }}" button_route="{{ route('phone-repairs.create') }}" />
         @else
             <div class="container-xl">
                 @if ($errors->any())
@@ -24,7 +24,7 @@
                         <a class="btn-close" data-bs-dismiss="alert" aria-label="close"></a>
                     </div>
                 @endif
-                <livewire:tables.phone-repair />
+                <livewire:tables.phone-repair-table />
             </div>
         @endif
     </div>

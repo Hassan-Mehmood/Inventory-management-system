@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Category;
+namespace App\Http\Requests\phoneRepairs;
 
-use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class UpdateCategoryRequest extends FormRequest
+class StorePhoneRepairRequest extends FormRequest
 {
 	/**
 	 * Determine if the user is authorized to make this request.
@@ -18,15 +17,13 @@ class UpdateCategoryRequest extends FormRequest
 	/**
 	 * Get the validation rules that apply to the request.
 	 *
-	 * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
+	 * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
 	 */
 	public function rules(): array
 	{
 		return [
-			'name' => [
-				'required',
-				Rule::unique('categories')->ignore($this->category)
-			]
+			'phone_name' => 'required',
+			'repair_part_id' => 'required',
 		];
 	}
 }
