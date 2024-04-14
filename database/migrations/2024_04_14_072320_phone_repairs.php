@@ -10,11 +10,19 @@ return new class extends Migration {
 	 */
 	public function up(): void
 	{
+		Schema::create("repair_parts", function (Blueprint $table) {
+			$table->increments("id");
+			$table->foreignId("user_id")->constrained()->onDelete('cascade');
+			$table->string("name");
+			$table->timestamps();
+		});
+
 		Schema::create("phone_repairs", function (Blueprint $table) {
 			$table->increments("id");
 			$table->foreignId("user_id")->constrained()->onDelete('cascade');
+			$table->unsignedInteger('repair_part_id');
+			$table->foreign('repair_part_id')->references('id')->on('repair_parts')->onDelete('cascade');
 			$table->string("phone_name");
-			$table->string("repair_parts");
 			$table->string("description")->nullable();
 			$table->string("status")->default("pending");
 			$table->timestamps();
@@ -26,6 +34,7 @@ return new class extends Migration {
 	 */
 	public function down(): void
 	{
+		Schema::dropIfExists("repair_parts");
 		Schema::dropIfExists("phone_repairs");
 	}
 };

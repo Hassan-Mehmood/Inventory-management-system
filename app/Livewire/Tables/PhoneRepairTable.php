@@ -32,12 +32,13 @@ class PhoneRepairTable extends Component
 	}
 	public function render()
 	{
-		$phone_repairs = PhoneRepair::where("user_id", auth()->id())
+		$phone_repairs = PhoneRepair::where("phone_repairs.user_id", auth()->id())
+			->join('repair_parts', 'phone_repairs.repair_part_id', '=', 'repair_parts.id')
+			->select('phone_repairs.*', 'repair_parts.name as repair_part_name')
 			->search($this->search)
 			->orderBy($this->sortField, $this->sortAsc ? 'asc' : 'desc')
 			->paginate($this->perPage);
 
-		// dd($phoneRepairs);
 		return view('livewire.tables.phone-repair-table', compact('phone_repairs'));
 	}
 }

@@ -26,6 +26,7 @@ class RepairPartsController extends Controller
 
 		RepairParts::create([
 			'name' => $request->name,
+			'user_id' => auth()->id()
 		]);
 
 		return redirect()->route('repair-parts.index')->with('success', 'Repair Part has been created!');

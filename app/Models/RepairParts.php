@@ -10,7 +10,7 @@ class RepairParts extends Model
 	use HasFactory;
 
 	protected $gaurded = ['id'];
-	protected $fillable = ['name'];
+	protected $fillable = ['name', 'user_id'];
 
 	public function scopeSearch($query, $search)
 	{

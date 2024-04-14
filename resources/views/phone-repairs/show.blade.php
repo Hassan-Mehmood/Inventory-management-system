@@ -6,8 +6,7 @@
             <div class="row g-2 align-items-center mb-3">
                 <div class="col">
                     <h2 class="page-title">
-                        {{-- {{ $product->name }} --}}
-                        Product Name
+                        {{ $phoneRepair->phone_name }}
                     </h2>
                 </div>
             </div>
@@ -20,20 +19,21 @@
         <div class="container-xl">
             <div class="row row-cards">
                 <div class="row">
-                    <div class="col-lg-4">
+                    {{-- <div class="col-lg-4">
                         <div class="card">
                             <div class="card-body">
                                 <h3 class="card-title">
                                     {{ __('Product Image') }}
                                 </h3>
 
-                                <img style="width: 90px;" id="image-preview" {{-- src="{{ $product->product_image ? asset('storage/' . $product->product_image) : asset('assets/img/products/default.webp') }}" --}} alt=""
-                                    class="img-account-profile mb-2">
+                                <img style="width: 90px;" id="image-preview"
+                                    src="{{ $product->product_image ? asset('storage/' . $product->product_image) : asset('assets/img/products/default.webp') }}"
+                                    alt="" class="img-account-profile mb-2">
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
-                    <div class="col-lg-8">
+                    <div class="col-lg-12">
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">
@@ -45,23 +45,21 @@
                                     <tbody>
                                         <tr>
                                             <td>Name</td>
-                                            {{-- <td>{{ $product->name }}</td> --}}
-                                            <td>Dummy Name</td>
+                                            <td>{{ $phoneRepair->phone_name }}</td>
                                         </tr>
                                         <tr>
                                             <td>Repair Part</td>
-                                            {{-- <td>{{ $product->slug }}</td> --}}
-                                            <td>Dummy Part</td>
+                                            <td>{{ $phoneRepair->repair_part_name }}</td>
                                         </tr>
                                         <tr>
                                             <td><span class="text-secondary">Description</span></td>
-                                            {{-- <td>{{ $product->code }}</td> --}}
-                                            <td>Dummy Decription</td>
+                                            <td>{{ $phoneRepair->description }}</td>
                                         </tr>
                                         <tr>
                                             <td>Status</td>
-                                            <td class="{{ $status === 'Completed' ? 'text-success' : 'text-danger' }}">
-                                                {{ $status }}
+                                            <td
+                                                class="{{ $phoneRepair->status === 'completed' ? 'text-success' : 'text-danger' }} text-uppercase">
+                                                {{ $phoneRepair->status }}
                                             </td>
                                         </tr>
                                     </tbody>
@@ -72,7 +70,7 @@
                                         {{ __('Status') }}
                                     </h3>
 
-                                    <x-progress :status="$status" />
+                                    <x-progress :status="$phoneRepair->status" />
 
                                 </div>
 
@@ -89,7 +87,7 @@
                                     </svg>
                                     {{ __('Back') }}
                                 </a>
-                                <a class="btn btn-warning" href="{{ route('products.edit', 1) }}">
+                                <a class="btn btn-warning" href="{{ route('phone-repairs.edit', 1) }}">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-pencil"
                                         width="24" height="24" viewBox="0 0 24 24" stroke-width="2"
                                         stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">

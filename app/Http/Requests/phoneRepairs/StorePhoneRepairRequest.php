@@ -23,7 +23,7 @@ class StorePhoneRepairRequest extends FormRequest
 	{
 		return [
 			'phone_name' => 'required',
-			'repair_parts' => 'required',
+			'repair_part_id' => 'required',
 		];
 	}
 }

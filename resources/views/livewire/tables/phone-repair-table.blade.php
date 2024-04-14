@@ -83,7 +83,7 @@
                             {{ $repair->phone_name }}
                         </td>
                         <td class="align-middle text-center">
-                            {{ $repair->repair_parts }}
+                            {{ $repair->repair_part_name }}
                         </td>
                         <td class="align-middle text-center">
                             {{ $repair->description }}
@@ -98,10 +98,8 @@
                         <td class="align-middle text-center">
                             <x-button.show class="btn-icon" route="{{ route('phone-repairs.show', $repair->id) }}" />
                             <x-button.edit class="btn-icon" route="{{ route('phone-repairs.edit', $repair->id) }}" />
-                            @if (true)
-                                <x-button.delete class="btn-icon" route="{{ route('orders.cancel', $repair->id) }}"
-                                    onclick="return confirm('Are you sure to cancel invoice no. 1 ?')" />
-                            @endif
+                            <x-button.delete class="btn-icon" route="{{ route('phone-repairs.destroy', $repair->id) }}"
+                                onclick="return confirm('Are you sure to delete?')" />
                         </td>
                     </tr>
 
@@ -114,6 +112,17 @@
                 @endforelse
             </tbody>
         </table>
+    </div>
+
+    <div class="card-footer d-flex align-items-center">
+        <p class="m-0 text-secondary">
+            Showing <span>{{ $phone_repairs->firstItem() }}</span>
+            to <span>{{ $phone_repairs->lastItem() }}</span> of <span>{{ $phone_repairs->total() }}</span> entries
+        </p>
+
+        <ul class="pagination m-0 ms-auto">
+            {{ $phone_repairs->links() }}
+        </ul>
     </div>
 
 </div>

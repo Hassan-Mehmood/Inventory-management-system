@@ -1,13 +1,13 @@
 @extends('layouts.tabler')
 
-<?php
-$repair_parts = [
+
+{{-- $repair_parts = [
     'Battery' => 'Battery',
     'Back Cover' => 'Back Cover',
     'Screen' => 'Screen',
     'Camera' => 'Camera',
     'Others' => 'Others',
-]; ?>
+];  --}}
 
 @section('content')
     <div class="page-body">
@@ -76,14 +76,16 @@ $repair_parts = [
                                         </div>
 
                                         <div class="col-sm-6 col-md-12">
-                                            <label for="repair_parts" class="form-label required">
+                                            <label for="repair_part_id" class="form-label required">
                                                 {{ __('Repair part') }}
                                             </label>
 
-                                            <select name="repair_parts" id="repair_parts" class="form-control form-select">
-                                                @foreach ($repair_parts as $key => $value)
-                                                    <option value="{{ $key }}">{{ $value }}</option>
+                                            <select name="repair_part_id" id="repair_part_id"
+                                                class="form-control form-select">
+                                                @foreach ($repairParts as $part)
+                                                    <option value="{{ $part->id }}">{{ $part->name }}</option>
                                                 @endforeach
+                                                {{-- <option value="others">Others</option> --}}
                                             </select>
                                         </div>
 
@@ -115,10 +117,16 @@ $repair_parts = [
 @pushonce('page-scripts')
     <script src="{{ asset('assets/js/img-preview.js') }}"></script>
     <script>
-        const select_repair_part = document.querySelector('#repair_parts');
+        const select_repair_part = document.querySelector('#repair_part_id');
+
+        window.onload = function() {
+            if (select_repair_part.value === 'others') {
+                document.querySelector('#desc_field').classList.remove('d-none');
+            }
+        }
 
         select_repair_part.addEventListener('change', function() {
-            if (select_repair_part.value === 'Others') {
+            if (select_repair_part.value === 'others') {
                 document.querySelector('#desc_field').classList.remove('d-none');
             } else {
                 document.querySelector('#desc_field').classList.add('d-none');

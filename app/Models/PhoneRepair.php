@@ -13,7 +13,7 @@ class PhoneRepair extends Model
 	protected $guarded = ['id'];
 	protected $fillable = [
 		'phone_name',
-		'repair_parts',
+		'repair_part_id',
 		'description',
 		'status',
 		'user_id',
