@@ -12,7 +12,8 @@ class PhoneRepairController extends Controller
 {
 	public function index()
 	{
-		return view("phone-repairs.index");
+		$repairs = PhoneRepair::where("user_id", auth()->id())->count();
+		return view("phone-repairs.index", compact("repairs"));
 	}
 
 	public function create()
@@ -34,14 +35,15 @@ class PhoneRepairController extends Controller
 
 	public function store(StorePhoneRepairRequest $request)
 	{
-		// dd($request);
+		// dd($request, ['user_id' => auth()->id()]);
 		$request->validated();
 
 		PhoneRepair::create([
+			'user_id' => auth()->id(),
 			'phone_name' => $request->phone_name,
 			'repair_parts' => $request->repair_parts,
 			'description' => $request->description,
-			'status' => $request->status ?? 'Pending'
+			'status' => $request->status ?? 'pending',
 		]);
 
 		return redirect()->route('phone-repairs.index')->with('success', 'Phone Repair has been created!');

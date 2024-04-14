@@ -12,10 +12,11 @@ return new class extends Migration {
 	{
 		Schema::create("phone_repairs", function (Blueprint $table) {
 			$table->increments("id");
+			$table->foreignId("user_id")->constrained()->onDelete('cascade');
 			$table->string("phone_name");
 			$table->string("repair_parts");
 			$table->string("description")->nullable();
-			$table->string("status")->default("Pending");
+			$table->string("status")->default("pending");
 			$table->timestamps();
 		});
 	}

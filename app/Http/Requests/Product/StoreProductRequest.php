@@ -2,9 +2,7 @@
 
 namespace App\Http\Requests\Product;
 
-use Illuminate\Support\Str;
 use Illuminate\Foundation\Http\FormRequest;
-use Haruncpi\LaravelIdGenerator\IdGenerator;
 
 class StoreProductRequest extends FormRequest
 {

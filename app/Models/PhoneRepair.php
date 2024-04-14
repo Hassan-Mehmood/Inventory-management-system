@@ -15,7 +15,8 @@ class PhoneRepair extends Model
 		'phone_name',
 		'repair_parts',
 		'description',
-		'status'
+		'status',
+		'user_id',
 	];
 	protected $casts = [
 		'created_at' => 'datetime',
