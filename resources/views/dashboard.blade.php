@@ -186,7 +186,7 @@
 
                 <div class="col-12">
                     <div class="row row-cards">
-                        <div class="col-sm-6 col-lg-3">
+                        <div class="col-sm-6 col-lg-4">
                             <a href="{{ route('products.index') }}">
                                 <div class="card card-sm">
                                     <div class="card-body">
@@ -225,7 +225,7 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="col-sm-6 col-lg-3">
+                        <div class="col-sm-6 col-lg-4">
                             <a href="{{ route('orders.index') }}">
                                 <div class="card card-sm">
                                     <div class="card-body">
@@ -258,7 +258,7 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="col-sm-6 col-lg-3">
+                        <div class="col-sm-6 col-lg-4">
                             <a href="{{ route('purchases.index') }}">
                                 <div class="card card-sm">
                                     <div class="card-body">
@@ -292,8 +292,7 @@
                                 </div>
                             </a>
                         </div>
-                        <div class="col-sm-6 col-lg-3">
-                            {{-- <a href="{{ route('users.index') }}"> --}}
+                        {{-- <div class="col-sm-6 col-lg-3">
                             <div class="card card-sm">
                                 <div class="card-body">
                                     <div class="row align-items-center">
@@ -324,7 +323,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
 

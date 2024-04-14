@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\phoneRepairs\StorePhoneRepairRequest;
+use App\Models\PhoneRepair;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use PHPUnit\Framework\MockObject\Stub\ReturnStub;
@@ -28,6 +30,21 @@ class PhoneRepairController extends Controller
 		}
 
 		return view('phone-repairs.show', ['status' => $status]);
+	}
+
+	public function store(StorePhoneRepairRequest $request)
+	{
+		// dd($request);
+		$request->validated();
+
+		PhoneRepair::create([
+			'phone_name' => $request->phone_name,
+			'repair_parts' => $request->repair_parts,
+			'description' => $request->description,
+			'status' => $request->status ?? 'Pending'
+		]);
+
+		return redirect()->route('phone-repairs.index')->with('success', 'Phone Repair has been created!');
 	}
 
 	public function edit($id)
