@@ -89,9 +89,12 @@
                                             </select>
                                         </div>
 
-                                        <div class="col-sm-6 col-md-12 d-none" id="desc_field">
-                                            <x-input name="description" lable='Write a description' id="description"
-                                                placeholder="Write a description" value="{{ old('description') }}" />
+                                        <div class="col-md-12 mb-3">
+                                            <label for="description" class="form-label">
+                                                {{ __('Decription') }}
+                                            </label>
+
+                                            <textarea name="description" id="description" rows="5" class="form-control" placeholder="Description...">{{ old('description') }}</textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -116,7 +119,7 @@
 
 @pushonce('page-scripts')
     <script src="{{ asset('assets/js/img-preview.js') }}"></script>
-    <script>
+    {{-- <script>
         const select_repair_part = document.querySelector('#repair_part_id');
 
         window.onload = function() {
@@ -132,5 +135,5 @@
                 document.querySelector('#desc_field').classList.add('d-none');
             }
         });
-    </script>
+    </script> --}}
 @endpushonce
