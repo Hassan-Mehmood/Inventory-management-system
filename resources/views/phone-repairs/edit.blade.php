@@ -106,21 +106,18 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-12 d-none" id="desc_field">
-                                            <div class="mb-3 mb-0">
-                                                <label for="description" class="form-label">
-                                                    {{ __('Decription') }}
-                                                </label>
+                                        <div class="col-md-12 mb-3">
+                                            <label for="description" class="form-label">
+                                                {{ __('Decription') }}
+                                            </label>
 
-                                                <textarea name="description" id="description" rows="5"
-                                                    class="form-control @error('description') is-invalid @enderror" placeholder="Description...">{{ old('description') }}</textarea>
+                                            <textarea name="description" id="description" rows="5" class="form-control" placeholder="Description...">{{ old('description', $phoneRepair->description) }}</textarea>
 
-                                                @error('description')
-                                                    <div class="invalid-feedback">
-                                                        {{ $message }}
-                                                    </div>
-                                                @enderror
-                                            </div>
+                                            @error('description')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
 
                                         <div class="col-sm-6 col-md-12">
