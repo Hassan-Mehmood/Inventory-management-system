@@ -49,6 +49,13 @@ class ProductController extends Controller
 			$image = $request->file('product_image')->store('products', 'public');
 		}
 
+		$sku = $this->generate_SKU(
+			$request->name,
+			$request->category,
+			$request->imei,
+			$request->upc_code
+		);
+
 		Product::create([
 			'name' => $request->name,
 			'category_id' => $request->category,
@@ -56,7 +63,7 @@ class ProductController extends Controller
 			'product_description' => $request->description,
 			'manufacturer' => $request->manufacturer,
 			'device' => $request->device,
-			'sku' => $request->sku,
+			'sku' => $sku,
 			'upc_code' => $request->upc_code,
 			'bar_code' => $request->bar_code,
 			'valuation_method' => $request->valuation_method,
@@ -195,5 +202,16 @@ class ProductController extends Controller
 		return redirect()
 			->route('products.index')
 			->with('success', 'Product has been deleted!');
+	}
+
+	private function generate_SKU(
+		$name,
+		$category_id,
+		$imei,
+		$upc_code
+	): string {
+		$sku = substr($name, 0, 2) . '-' . substr(Str::uuid(), 0, 2) . '-' . $category_id . '-' . substr($imei, 0, 2) . '-' . substr($upc_code, 0, 2);
+
+		return strtoupper(str_replace(" ", "", $sku));
 	}
 }

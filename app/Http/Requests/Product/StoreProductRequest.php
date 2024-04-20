@@ -29,7 +29,7 @@ class StoreProductRequest extends FormRequest
 			'description' => 'required|string',
 			'manufacturer' => 'required|string',
 			'device' => 'required|string',
-			'sku' => 'required|string',
+			// 'sku' => 'required|string',
 			'upc_code' => 'required|string',
 			'bar_code' => 'required|string',
 			'valuation_method' => 'required|string',

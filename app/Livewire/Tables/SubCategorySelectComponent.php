@@ -29,7 +29,8 @@ class SubCategorySelectComponent extends Component
 	{
 		$categories = Category::where("user_id", auth()->id())->get(['id', 'name']);
 		/* for fetching subcategory recode */
-		if (!$this->selectedCategory) {
+		// dd();
+		if (!$this->selectedCategory && count($categories) > 0) {
 			$this->selectedCategory = $categories[0]['id'];
 		}
 
