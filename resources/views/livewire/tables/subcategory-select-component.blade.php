@@ -6,6 +6,7 @@
                 Categories
             </label>
             <select wire:model.live="selectedCategory" name="category" id="category" class="form-select">
+                <option disabled="">Select a category:</option>
                 @foreach ($categories as $category)
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach

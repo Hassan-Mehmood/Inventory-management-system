@@ -84,10 +84,10 @@
                                                 value="{{ old('device') }}" />
                                         </div>
 
-                                        <div class="col-sm-6 col-md-6">
+                                        {{-- <div class="col-sm-6 col-md-6">
                                             <x-input label="SKU" name="sku" id="sku"
                                                 value="{{ old('sku') }}" />
-                                        </div>
+                                        </div> --}}
 
                                         <div class="col-sm-6 col-md-6">
                                             <x-input label="UPC Code" name="upc_code" id="upc_code"
