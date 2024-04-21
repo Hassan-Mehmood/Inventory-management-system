@@ -64,7 +64,8 @@
                                         <div class="col-md-12">
                                             <x-input name="name" id="name" value="{{ old('name') }}" />
                                         </div>
-                                        @livewire('tables.subcategory-select-component', ['product' => $product])
+                                        {{-- @livewire('tables.subcategory-select-component', ['product' => $product]) --}}
+                                        @livewire('tables.subcategory-component', ['product' => $product])
 
                                         <div class="col-md-12 mb-3">
                                             <label for="description" class="form-label">
