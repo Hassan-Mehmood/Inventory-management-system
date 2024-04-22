@@ -457,6 +457,9 @@
                                             <a class="dropdown-item" href="{{ route('repair-parts.index') }}">
                                                 {{ __('Repair Parts') }}
                                             </a>
+                                            <a class="dropdown-item" href="{{ route('devices.index') }}">
+                                                {{ __('Devices') }}
+                                            </a>
                                             {{-- <a class="dropdown-item" href="{{ route('units.index') }}">
                                                 {{ __('Units') }}
                                             </a> --}}
