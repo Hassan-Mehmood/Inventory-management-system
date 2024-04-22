@@ -289,7 +289,7 @@
                             {{ $product->upc_code }}
                         </td>
                         <td class="align-middle text-center">
-                            {{ $product->is_barcode }}
+                            {{ $product->is_barcode ? 'Yes' : 'No' }}
                         </td>
                         <td class="align-middle text-center">
                             {{ $product->valuation_method }}
@@ -349,10 +349,10 @@
                             {{ $product->imei }}
                         </td>
                         <td class="align-middle text-center">
-                            {{ $product->display_on_point_of_sale }}
+                            {{ $product->display_on_point_of_sale ? 'Yes' : 'No' }}
                         </td>
                         <td class="align-middle text-center">
-                            {{ $product->display_on_widget }}
+                            {{ $product->display_on_widget ? 'Yes' : 'No' }}
                         </td>
                         <td class="align-middle text-center">
                             {{ $product->comission_percentage }}

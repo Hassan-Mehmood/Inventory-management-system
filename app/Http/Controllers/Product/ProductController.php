@@ -147,7 +147,7 @@ class ProductController extends Controller
 		$product->product_description = $request->description;
 		$product->manufacturer = $request->manufacturer;
 		$product->device = $request->device;
-		$product->sku = $request->sku;
+		// $product->sku = $request->sku;
 		$product->upc_code = $request->upc_code;
 		$product->is_barcode = $request->bar_code === 'true' ? 1 : 0;
 		$product->valuation_method = $request->valuation_method;
@@ -170,8 +170,8 @@ class ProductController extends Controller
 		$product->warranty = $request->warranty;
 		$product->warranty_time_frame = $request->warranty_time_frame;
 		$product->imei = $request->imei;
-		$product->display_on_point_of_sale = $request->display_on_point_of_sale === 'true' ? 1 : 0;
-		$product->display_on_widget = $request->display_on_widget === 'true' ? 1 : 0;
+		$product->display_on_point_of_sale = $request->display_pos === 'true' ? 1 : 0;
+		$product->display_on_widget = $request->display_widget === 'true' ? 1 : 0;
 		$product->comission_percentage = $request->comission_percentage;
 		$product->comission_amount = $request->comission_amount;
 		$product->user_id = auth()->id();

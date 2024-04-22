@@ -80,7 +80,9 @@
                                             </div>
                                         </div>
 
-                                        @livewire('tables.subcategory-select-component', ['product' => $product])
+                                        {{-- @livewire('tables.subcategory-select-component', ['product' => $product]) --}}
+                                        @livewire('tables.subcategory-component', ['product' => $product])
+
 
 
                                         <div class="col-md-12 mb-3">
@@ -100,11 +102,11 @@
                                             <x-input label="Device" name="device" id="device"
                                                 value="{{ old('device', $product->device) }}" />
                                         </div>
-
+                                        {{-- 
                                         <div class="col-sm-6 col-md-6">
                                             <x-input label="SKU" name="sku" id="sku"
                                                 value="{{ old('sku', $product->sku) }}" />
-                                        </div>
+                                        </div> --}}
 
                                         <div class="col-sm-6 col-md-6">
                                             <x-input label="UPC Code" name="upc_code" id="upc_code"
@@ -237,10 +239,10 @@
                                             </label>
                                             <select name="display_pos" id="display_pos" class="form-select">
                                                 <option value="true"
-                                                    {{ $product->display_on_point_of_sale === 'true' ? 'selected' : '' }}>
+                                                    {{ $product->display_on_point_of_sale ? 'selected' : '' }}>
                                                     Yes</option>
                                                 <option value="false"
-                                                    {{ $product->display_on_point_of_sale === 'false' ? 'selected' : '' }}>
+                                                    {{ $product->display_on_point_of_sale ? '' : 'selected' }}>
                                                     No</option>
                                             </select>
                                         </div>
@@ -251,11 +253,10 @@
                                             </label>
                                             <select name="display_widget" id="display_widget" class="form-select">
                                                 <option value="true"
-                                                    {{ $product->display_on_widget === 'true' ? 'selected' : '' }}>
+                                                    {{ $product->display_on_widget ? 'selected' : '' }}>
                                                     Yes
                                                 </option>
-                                                <option
-                                                    value="false"{{ $product->display_on_widget === 'false' ? 'selected' : '' }}>
+                                                <option value="false"{{ $product->display_on_widget ? '' : 'selected' }}>
                                                     No</option>
                                             </select>
                                         </div>
