@@ -6,18 +6,17 @@
                 Categories
             </label>
             <select wire:model.live="selectedCategory" name="category" id="category" class="form-select">
-                <option disabled="">Select a category:</option>
                 @foreach ($categories as $category)
                     <option value="{{ $category->id }}">{{ $category->name }}</option>
                 @endforeach
             </select>
+            <a href="{{ route('categories.create') }}" class="btn btn-primary btn-sm mt-2">Add Category</a>
         </div>
         <div class="col-sm-6 col-md-6 mb-3">
             <label for="sub_category" class="form-label">
                 Sub Categories
             </label>
             <select wire:model="selectedSubCategory" name="sub_category" id="sub_category" class="form-select">
-                <option disabled="">Select a sub category:</option>
                 @if ($selectedCategory)
                     @foreach (\App\Models\Subcategory::where('category_id', $selectedCategory)->get() as $subcategory)
                         <option value="{{ $subcategory->id }}"
@@ -26,6 +25,7 @@
                     @endforeach
                 @endif
             </select>
+            <a href="{{ route('subcategories.create') }}" class="btn btn-primary btn-sm mt-2">Add Sub Category</a>
         </div>
 
 
