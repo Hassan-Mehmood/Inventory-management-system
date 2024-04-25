@@ -33,7 +33,7 @@ class ProductTable extends Component
 	public function render()
 	{
 
-		$products = Product::join('categories', 'products.category_id', '=', 'categories.id')
+		$products = Product::join('categories', 'products.category_id', '=', 'categories.id')->with(['device_id'])
 			->join('sub_categories', 'products.sub_category', '=', 'sub_categories.id')
 			->where("products.user_id", auth()->id())
 			->select('products.name as product_name', 'categories.name as category_name', 'products.*', 'sub_categories.sub_category_name')

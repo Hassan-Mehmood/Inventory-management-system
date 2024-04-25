@@ -39,6 +39,7 @@ class Product extends Model
 		're_order_level',
 		'manage_serialized',
 		'condition',
+		'device_id',
 		'slug',
 		'quantity',
 		'product_image',
@@ -70,6 +71,10 @@ class Product extends Model
 	public function category_id(): BelongsTo
 	{
 		return $this->belongsTo(Category::class);
+	}
+	public function device_id(): BelongsTo
+	{
+		return $this->belongsTo(Device::class);
 	}
 
 	public function scopeSearch($query, $value): void

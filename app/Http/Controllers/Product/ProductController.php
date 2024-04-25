@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Product\StoreProductRequest;
 use App\Http\Requests\Product\UpdateProductRequest;
 use App\Models\Category;
+use App\Models\Device;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Str;
@@ -25,6 +26,7 @@ class ProductController extends Controller
 	{
 		$categories = Category::where("user_id", auth()->id())->get(['id', 'name']);
 		$product = Product::where('uuid', auth()->id())->first();
+		$devices = Device::where('user_id', auth()->id())->get(['id', 'name']);
 
 		// $sub_categories = SubCategory::where("category_id", $categories[0]['id'])->get(['id', 'sub_category_name']);
 
@@ -34,7 +36,8 @@ class ProductController extends Controller
 
 		return view('products.create', [
 			'categories' => $categories,
-			'product' => $product
+			'product' => $product,
+			'devices' => $devices,
 			// 'sub_categories' => $sub_categories,
 		]);
 	}
@@ -91,10 +94,10 @@ class ProductController extends Controller
 			'comission_percentage' => $request->comission_percentage,
 			'comission_amount' => $request->comission_amount,
 			'user_id' => auth()->id(),
+			'device_id' => $request->device,
 			'slug' => Str::slug($request->name, '-'),
 			'uuid' => Str::uuid(),
 		]);
-
 
 		return to_route('products.index')->with('success', 'Product has been created!');
 	}

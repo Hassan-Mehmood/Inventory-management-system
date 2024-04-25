@@ -81,8 +81,18 @@
                                         </div>
 
                                         <div class="col-sm-6 col-md-6">
-                                            <x-input label="Device" name="device" id="device"
-                                                value="{{ old('device') }}" />
+                                            {{-- <x-input label="Device" name="device" id="device"
+                                                value="{{ old('device') }}" /> --}}
+                                            <label for="device" class="form-label">
+                                                Device
+                                            </label>
+                                            <select name="device" id="device" class="form-select">
+                                                @foreach ($devices as $device)
+                                                    <option value="{{ $device->id }}">{{ $device->name }}</option>
+                                                @endforeach
+                                            </select>
+                                            <a href="{{ route('devices.create') }}" class="btn btn-primary btn-sm mt-2">Add
+                                                a device</a>
                                         </div>
 
                                         {{-- <div class="col-sm-6 col-md-6">
